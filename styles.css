@@ -1,0 +1,575 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    padding-top: 60px; /* Space for the navbar */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Hero Section Styles */
+.hero {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background-color: #28a745;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
+
+/* Section Styles */
+section {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+/* Care Section */
+.care-section {
+    background-color: #f4f4f4;
+}
+
+.care-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.care-section p {
+    font-size: 1.2rem;
+}
+
+/* Work with Us Section */
+.work-with-us-section {
+    background-color: #fff;
+}
+
+.work-with-us-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.work-with-us-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* All About Cats Section */
+.cats-section {
+    background-color: #f4f4f4;
+}
+
+.cats-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cats-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Video Section */
+.video-section {
+    background-color: #fff;
+}
+
+.video-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.video-section video {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #f9f9f9;
+    padding: 4rem 2rem;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-form label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.contact-form textarea {
+    height: 150px;
+    resize: none;
+}
+
+.contact-form .btn {
+    background-color: #007bff;
+    padding: 0.8rem;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.contact-form .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Booking Section */
+.services {
+    background-color: #fff;
+    padding: 4rem 2rem;
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.services p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Login Section */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background-color: #f4f4f4;
+    padding: 2rem;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.login-container label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"],
+.login-container input[type="email"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.login-container input:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+.login-container .btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.login-container .btn:hover {
+    background-color: #218838;
+}
+
+.login-container p {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* Register Section */
+.register-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #f4f4f4;
+    padding: 2rem;
+}
+
+.register-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.register-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.register-container label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.register-container input[type="text"],
+.register-container input[type="password"],
+.register-container input[type="email"],
+.register-container input[type="tel"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.register-container input:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+.register-container .btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.register-container .btn:hover {
+    background-color: #0056b3;
+}
+
+.register-container p {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.register-container a {
+    color: #28a745;
+    text-decoration: none;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
+
+/* Services Section */
+.services-section {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.services-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.services-section .service-card {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.services-section .service-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.services-section .service-card p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Book Appointment Section */
+.booking-section {
+    padding: 4rem 2rem;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.booking-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.booking-section .booking-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.booking-section label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.booking-section input,
+.booking-section select {
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.booking-section input:focus,
+.booking-section select:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+.booking-section .btn {
+    background-color: #007bff;
+    padding: 0.8rem;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.booking-section .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Payment Section */
+.payment-section {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.payment-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.payment-section .payment-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.payment-section label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.payment-section input,
+.payment-section select {
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.payment-section input:focus,
+.payment-section select:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+.payment-section .btn {
+    background-color: #28a745;
+    padding: 0.8rem;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.payment-section .btn:hover {
+    background-color: #218838;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .navbar ul li {
+        margin-bottom: 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .services-section h2,
+    .booking-section h2,
+    .payment-section h2 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}

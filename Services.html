@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Vet Doctor Clinic</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Navbar (reused) -->
+<nav class="navbar">
+    <ul>
+        <li><a href="Home_Page.html">Home</a></li>
+        <li><a href="Book%20Appointment.html">Book Appointment</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Payments.html">Payments</a></li>
+        <li><a href="Contact.html">Contacts</a></li>
+        <li><a href="Login.html">Login/Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Services Section -->
+<section class="services-section">
+    <div class="services-container">
+        <h2>Our Services</h2>
+        <ul>
+            <li>
+                <h3>Check-up</h3>
+                <p>Regular health checks for your pet to ensure they stay in good shape.</p>
+            </li>
+            <li>
+                <h3>Vaccination</h3>
+                <p>Protect your pet from diseases with our comprehensive vaccination services.</p>
+            </li>
+            <li>
+                <h3>Surgery</h3>
+                <p>Professional surgical services with care and precision.</p>
+            </li>
+            <li>
+                <h3>Grooming</h3>
+                <p>Keep your pet looking and feeling their best with our grooming services.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
+</footer>
+<script>
+    function logout() {
+        sessionStorage.removeItem('loggedin');
+        window.location.href = 'Login.html'; // Redirect to login page
+    }
+</script>
+<script src="script.js"></script>
+</body>
+</html>

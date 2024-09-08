@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - Vet Doctor Clinic</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Navbar (reused) -->
+<nav class="navbar">
+    <ul>
+        <li><a href="Home_Page.html">Home</a></li>
+        <li><a href="Book%20Appointment.html">Book Appointment</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Payments.html">Payments</a></li>
+        <li><a href="Contact.html">Contacts</a></li>
+        <li><a href="Login.html">Login/Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Payments Section -->
+<section class="payment-section">
+    <div class="payment-container">
+        <h2>Make a Payment</h2>
+        <form id="paymentForm">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" name="cardNumber" required>
+
+            <label for="cardName">Cardholder Name:</label>
+            <input type="text" id="cardName" name="cardName" required>
+
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="month" id="expiryDate" name="expiryDate" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required>
+
+            <button type="submit" class="btn">Submit Payment</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
