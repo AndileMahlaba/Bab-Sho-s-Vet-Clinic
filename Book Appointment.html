@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Appointment - Vet Doctor Clinic</title>
-    <link rel="stylesheet" href="styles3.css">
+    <link rel="stylesheet" href="Book2.css">
 </head>
-<body>
+<body class="Designs">
 
 
 <!-- Navbar (reused)-->
@@ -15,11 +15,12 @@
     <nav class="sidebar" id="sidebar">
         <ul>
             <li><a href="Home_Page.html">Home</a></li>
-            <li><a href="Book Appointment.html">Book Appointment</a></li>
-            <li><a href="Services.html">Services</a></li>
-            <li><a href="Payments.html">Payments</a></li>
-            <li><a href="Contact.html">Contacts</a></li>
-            <li><a href="Login.html">Login/Logout</a></li>
+                <li><a href="Book Appointment.html">Book Appointment</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="Payments.html">Payments</a></li>
+                <li><a href="Contact.html">Contacts</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="Login.html">Login/Logout</a></li>
         </ul>
     </nav>
 
@@ -33,14 +34,15 @@
                 <li><a href="Services.html">Services</a></li>
                 <li><a href="Payments.html">Payments</a></li>
                 <li><a href="Contact.html">Contacts</a></li>
+                <li><a href="register.html">Register</a></li>
                 <li><a href="Login.html">Login/Logout</a></li>
             </ul>
         </nav>
-    
+
 <!-- Appointment Booking Section -->
 <section class="booking-section">
     <div class="booking-container">
-        <h2>Book an Appointment</h2>
+        <h2 class="Book">Book an Appointment</h2>
         <form id="bookingForm">
             <label for="petName">Pet's Name:</label>
             <input type="text" id="petName" name="petName" required>
@@ -77,6 +79,7 @@
         window.location.href = 'Login.html'; // Redirect to login page
     }
 </script>
+
 <script src="script.js"></script>
 </body>
 </html>
