@@ -1,575 +1,285 @@
-/* Global Styles */
-body {
-    margin: 0;
+/* Base styles */
+* { 
     font-family: 'Arial', sans-serif;
-    color: #333;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    padding-top: 60px; /* Space for the navbar */
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body and background */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: url('Payment_Pup.jpeg') no-repeat center center fixed !important;
+    background-size: cover !important;
+    overflow-x: hidden;
+    padding-top: 60px; /* Adjusted for navbar height */
+  }
+  
+ 
 /* Navbar Styles */
+
 .navbar {
-    background-color: #333;
-    padding: 1rem;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #2E8B57; 
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
 }
 
 .navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
+  list-style: none;
+  display: flex;
 }
 
 .navbar ul li {
-    margin: 0 15px;
+  margin: 0 5px;
 }
 
 .navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 20px;
-    display: block;
-    transition: background 0.3s ease;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 14px 20px;
+  display: block;
+  transition: background 0.3s ease;
+  border-radius: 5px;
 }
 
 .navbar ul li a:hover {
-    background-color: #555;
-    border-radius: 5px;
+  background-color: #29e77f;
 }
 
-/* Hero Section Styles */
-.hero {
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 1s ease-in-out;
+/* Hamburger Menu (Mobile) */
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: white;
 }
 
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+/* Sidebar Styles */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; 
+  width: 250px;
+  height: 100%;
+  background-color: #8BC34A; 
+  padding-top: 60px;
+  transition: left 0.3s ease-in-out;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  border-right: 1px solid #ccc;
 }
 
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+.sidebar.active {
+  left: 0; 
 }
 
-.btn {
-    background-color: #28a745;
+.sidebar ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.sidebar ul li a {
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background 0.3s ease;
+  border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #29e77f;
+}
+
+/* Utility Classes */
+
+.text-large {
+  font-size: 1.2rem;
+}
+
+.padding-small {
+  padding: 0.8rem;
+}
+
+/* Media Queries for Responsive Design */
+
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
+  .sidebar {
+    width: 200px;
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar {
+    width: 150px;
+  }
+  
+  .sidebar ul li a {
+    font-size: 1rem;
+  }
+}
+
+
+/* Button Styles */
+  .btn {
+    background-color: #007bff;
     color: white;
     padding: 0.8rem 2rem;
     border-radius: 5px;
-    text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
     transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #218838;
-}
-
-/* Section Styles */
-section {
-    padding: 3rem 2rem;
+    text-decoration: none;
     text-align: center;
-}
-
-/* Care Section */
-.care-section {
-    background-color: #f4f4f4;
-}
-
-.care-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.care-section p {
-    font-size: 1.2rem;
-}
-
-/* Work with Us Section */
-.work-with-us-section {
-    background-color: #fff;
-}
-
-.work-with-us-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.work-with-us-section p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-/* All About Cats Section */
-.cats-section {
-    background-color: #f4f4f4;
-}
-
-.cats-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.cats-section p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Video Section */
-.video-section {
-    background-color: #fff;
-}
-
-.video-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.video-section video {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-}
-
-/* Contact Section */
-.contact-section {
-    background-color: #f9f9f9;
+    display: block;
+    margin: 20px auto; /* Added margin for spacing */
+    width: fit-content;
+  }
+  
+  .btn:hover {
+    background-color: #218838;
+  }
+  
+  /* Section Styles */
+  section {
+    padding: 4rem 2rem; /* Increased padding for general spacing */
+    text-align: center;
+    color: white;
+  }
+  
+  /* Booking Section */
+  .booking-section {
     padding: 4rem 2rem;
-}
-
-.contact-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.contact-section p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+    text-align: center;
+  }
+  
+  .booking-container {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Better visibility */
+    border-radius: 15px;
+    padding: 2rem;
     max-width: 400px;
     margin: 0 auto;
-    text-align: left;
-}
-
-.contact-form label {
-    margin-bottom: 0.5rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .booking-container form {
+    display: flex;
+    flex-direction: column; /* Stacked form elements */
+    align-items: center;
+    width: 100%;
+  }
+  
+  .booking-container label {
+    margin-bottom: 0.8rem;
     font-weight: bold;
-}
-
-.contact-form input,
-.contact-form textarea {
+    text-align: left;
+    width: 100%;
+  }
+  
+  .booking-container input, 
+  .booking-container select {
     padding: 0.8rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #007bff;
+  }
+  
+  .booking-container input:focus, 
+  .booking-container select:focus {
+    border-color: #28a745;
     outline: none;
-}
-
-.contact-form textarea {
-    height: 150px;
-    resize: none;
-}
-
-.contact-form .btn {
-    background-color: #007bff;
-    padding: 0.8rem;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.contact-form .btn:hover {
-    background-color: #0056b3;
-}
-
-/* Booking Section */
-.services {
-    background-color: #fff;
-    padding: 4rem 2rem;
-}
-
-.services h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.services p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-/* Footer Styles */
-footer {
+  }
+  
+  /* Footer */
+  footer {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 1rem 0;
-}
-
-footer p {
-    margin: 0;
-}
-
-/* Login Section */
-.login-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-    background-color: #f4f4f4;
-    padding: 2rem;
-}
-
-.login-container {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-}
-
-.login-container h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.login-container label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-.login-container input[type="text"],
-.login-container input[type="password"],
-.login-container input[type="email"] {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-.login-container input:focus {
-    border-color: #28a745;
-    outline: none;
-}
-
-.login-container .btn {
-    width: 100%;
-    padding: 0.8rem;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.login-container .btn:hover {
-    background-color: #218838;
-}
-
-.login-container p {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.login-container a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.login-container a:hover {
-    text-decoration: underline;
-}
-
-/* Register Section */
-.register-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    background-color: #f4f4f4;
-    padding: 2rem;
-}
-
-.register-container {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-}
-
-.register-container h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.register-container label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-.register-container input[type="text"],
-.register-container input[type="password"],
-.register-container input[type="email"],
-.register-container input[type="tel"] {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-.register-container input:focus {
-    border-color: #28a745;
-    outline: none;
-}
-
-.register-container .btn {
-    width: 100%;
-    padding: 0.8rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.register-container .btn:hover {
-    background-color: #0056b3;
-}
-
-.register-container p {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.register-container a {
-    color: #28a745;
-    text-decoration: none;
-}
-
-.register-container a:hover {
-    text-decoration: underline;
-}
-
-/* Services Section */
-.services-section {
-    padding: 4rem 2rem;
-    background-color: #fff;
-    text-align: center;
-}
-
-.services-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-}
-
-.services-section .service-card {
-    background-color: #f9f9f9;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-}
-
-.services-section .service-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.services-section .service-card p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Book Appointment Section */
-.booking-section {
-    padding: 4rem 2rem;
-    background-color: #f4f4f4;
-    text-align: center;
-}
-
-.booking-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-}
-
-.booking-section .booking-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.booking-section label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-.booking-section input,
-.booking-section select {
-    padding: 0.8rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 1rem;
-}
-
-.booking-section input:focus,
-.booking-section select:focus {
-    border-color: #28a745;
-    outline: none;
-}
-
-.booking-section .btn {
-    background-color: #007bff;
-    padding: 0.8rem;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.booking-section .btn:hover {
-    background-color: #0056b3;
-}
-
-/* Payment Section */
-.payment-section {
-    padding: 4rem 2rem;
-    background-color: #fff;
-    text-align: center;
-}
-
-.payment-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-}
-
-.payment-section .payment-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.payment-section label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-.payment-section input,
-.payment-section select {
-    padding: 0.8rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 1rem;
-}
-
-.payment-section input:focus,
-.payment-section select:focus {
-    border-color: #28a745;
-    outline: none;
-}
-
-.payment-section .btn {
-    background-color: #28a745;
-    padding: 0.8rem;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.payment-section .btn:hover {
-    background-color: #218838;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
+    position: relative;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
     .navbar ul {
-        flex-direction: column;
+      display: none; /* Hidden on mobile */
     }
-
-    .navbar ul li {
-        margin-bottom: 10px;
+  
+    body {
+      padding-top: 70px; /* Adjust padding-top */
     }
-
-    .hero-content h1 {
-        font-size: 2rem;
+  
+    .hamburger {
+      display: block;
     }
-
-    .hero-content p {
-        font-size: 1rem;
+  }
+  
+  @media (max-width: 400px) {
+    .navbar ul li a {
+      font-size: 0.8rem;
+      padding: 10px 15px;
     }
-
-    .services-section h2,
-    .booking-section h2,
-    .payment-section h2 {
-        font-size: 2rem;
+  
+    body {
+      padding-top: 80px; /* Increase for smaller screens */
     }
-
-    .container {
-        padding: 10px;
+  
+    .btn {
+      width: 100%;
     }
-}
+  
+    .booking-section {
+      padding: 2rem 1rem;
+      padding-top: 100px;
+    }
+  }
+  
+  @media (max-width: 300px) {
+    .navbar ul li a {
+      font-size: 0.7rem;
+      padding: 8px 10px;
+    }
+  
+    .booking-section {
+      padding: 1.5rem 0.5rem;
+    }
+  }
+  
