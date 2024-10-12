@@ -141,7 +141,7 @@
   
   /* Button Styles */
   .btn {
-    background-color: #007bff;
+    background-color: #31da5b;
     color: white;
     padding: 0.8rem 2rem;
     border-radius: 5px;
@@ -172,12 +172,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #333;
+    color: #000000;
     padding-top: 120px;
     box-sizing: border-box;
   }
   
   .hero-content {
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius:3px ;
     padding: 2rem;
     text-align: center;
   }
