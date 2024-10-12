@@ -7,6 +7,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+app.use(cors({
+    origin: '*', // Allow all origins, you can restrict this to specific domains if needed
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type']
+}));
+
+
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
 
