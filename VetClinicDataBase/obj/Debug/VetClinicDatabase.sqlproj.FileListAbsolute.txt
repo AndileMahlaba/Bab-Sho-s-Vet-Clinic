@@ -1,0 +1,10 @@
+c:\Users\mahla\OneDrive\Documents\GitHub\Bab-Sho-s-Vet-Clinic\VetClinicDatabase\bin\Debug\VetClinicDatabase.dacpac
+c:\Users\mahla\OneDrive\Documents\GitHub\Bab-Sho-s-Vet-Clinic\VetClinicDatabase\bin\Debug\VetClinicDatabase.dll
+c:\Users\mahla\OneDrive\Documents\GitHub\Bab-Sho-s-Vet-Clinic\VetClinicDatabase\bin\Debug\VetClinicDatabase.pdb
+c:\Users\mahla\OneDrive\Documents\GitHub\Bab-Sho-s-Vet-Clinic\VetClinicDatabase\obj\Debug\VetClinicDatabase.sqlproj.AssemblyReference.cache
+c:\Users\mahla\OneDrive\Documents\GitHub\Bab-Sho-s-Vet-Clinic\VetClinicDatabase\obj\Debug\Model.xml
+c:\Users\mahla\OneDrive\Documents\GitHub\Bab-Sho-s-Vet-Clinic\VetClinicDatabase\obj\Debug\refactor.xml
+c:\Users\mahla\OneDrive\Documents\GitHub\Bab-Sho-s-Vet-Clinic\VetClinicDatabase\obj\Debug\postdeploy.sql
+c:\Users\mahla\OneDrive\Documents\GitHub\Bab-Sho-s-Vet-Clinic\VetClinicDatabase\obj\Debug\predeploy.sql
+c:\Users\mahla\OneDrive\Documents\GitHub\Bab-Sho-s-Vet-Clinic\VetClinicDatabase\obj\Debug\VetClinicDatabase.dll
+c:\Users\mahla\OneDrive\Documents\GitHub\Bab-Sho-s-Vet-Clinic\VetClinicDatabase\obj\Debug\VetClinicDatabase.pdb
