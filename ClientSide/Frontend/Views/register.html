@@ -79,19 +79,25 @@
 <footer>
     <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
 </footer>
-
-<script>
-    // Basic client-side password confirmation check
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-
-        if (password !== confirmPassword) {
-            event.preventDefault();
-            alert('Passwords do not match.');
-        }
-    });
-</script>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAvyoiWHOCEJOb7XwIMLPcqV5vgf26iLRk",
+      authDomain: "vet-clinic-dc537.firebaseapp.com",
+      projectId: "vet-clinic-dc537",
+      storageBucket: "vet-clinic-dc537.appspot.com",
+      messagingSenderId: "506192283099",
+      appId: "1:506192283099:web:dbd0762387c1ea980393fe"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
 <script src="script.js"></script>
 </body>
 </html>

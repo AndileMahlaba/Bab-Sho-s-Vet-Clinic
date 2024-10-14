@@ -172,14 +172,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #000000;
+    color:rgb(86, 231, 105);
     padding-top: 120px;
     box-sizing: border-box;
   }
   
   .hero-content {
     backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(42, 207, 9, 0.322);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     border-radius:3px ;
     padding: 2rem;
@@ -189,7 +189,7 @@
   .hero-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: black;
+    color: rgb(86, 231, 105);
   }
   
   .hero-content p {
@@ -203,6 +203,9 @@
     max-width: 800px;
     border-radius: 10px;
     margin: 1rem 0 2rem;
+  }
+  .fullbody{
+    margin-top: 20px;
   }
   
   /* Footer */
@@ -258,4 +261,5 @@
       font-size: 1rem;
     }
   }
+
   
