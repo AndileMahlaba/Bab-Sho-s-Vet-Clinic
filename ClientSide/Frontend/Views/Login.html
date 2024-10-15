@@ -71,7 +71,6 @@
 <footer>
     <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
 </footer>
-<script src="script.js"></script>
 
 <script>
     document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -81,7 +80,7 @@
         const password = document.getElementById('password').value;
 
         // Send login data to the server
-        fetch('http://localhost:2000/api/login', {
+        fetch('http://localhost:4000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -91,10 +90,8 @@
         .then(response => response.json())
         .then(data => {
             if (data.message === 'Login successful') {
-                // Set the session or localStorage for logged-in status
                 sessionStorage.setItem('loggedin', 'true');
-                // Redirect to homepage
-                window.location.href = 'Home_Page.html';
+                window.location.href = 'Home_Page.html'; // Redirect on success
             } else {
                 alert('Invalid username or password.');
             }
@@ -105,6 +102,7 @@
         });
     });
 </script>
+
 
 </body>
 </html>

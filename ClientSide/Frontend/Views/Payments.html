@@ -76,7 +76,36 @@
 <footer>
     <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
 </footer>
+<script>
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-<script src="script.js"></script>
+        const cardNumber = document.getElementById('cardNumber').value;
+        const cardName = document.getElementById('cardName').value;
+        const expiryDate = document.getElementById('expiryDate').value;
+        const cvv = document.getElementById('cvv').value;
+
+        fetch('http://localhost:4000/add-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ paymentMethod: 'card', accountNum: cardNumber, accountHolder: cardName, accountExpDate: expiryDate, accountCVV: cvv, paymentAmt: 100.00, paymentDate: new Date().toISOString().split('T')[0], ownerID: 1 })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Payment added successfully') {
+                alert('Payment successful.');
+            } else {
+                alert('Payment failed.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error processing the payment. Please try again.');
+        });
+    });
+</script>
+
 </body>
 </html>

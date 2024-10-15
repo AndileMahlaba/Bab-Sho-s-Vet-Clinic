@@ -73,13 +73,38 @@
 <footer>
     <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
 </footer>
+
 <script>
-    function logout() {
-        sessionStorage.removeItem('loggedin');
-        window.location.href = 'Login.html'; // Redirect to login page
-    }
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const petName = document.getElementById('petName').value;
+        const ownerName = document.getElementById('ownerName').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const service = document.getElementById('service').value;
+
+        fetch('http://localhost:4000/add-appointment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ appointTime: time, appointDate: date, appointStatus: 'Pending', AdminID: 1, ownerID: 1, petID: 1, doctorID: 1 })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Appointment booked successfully') {
+                alert('Your appointment has been booked.');
+            } else {
+                alert('Failed to book appointment.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error booking the appointment. Please try again.');
+        });
+    });
 </script>
 
-<script src="script.js"></script>
 </body>
 </html>
