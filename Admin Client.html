@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Clients and Pets</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="clients-container">
+        <h1>Manage Clients and Pets</h1>
+
+        <!-- Add New Client and Pet Form -->
+        <div class="add-client-form">
+            <h2 id="form-title">Add New Client</h2>
+            <form id="client-form" action="#" method="POST">
+                <input type="hidden" id="editing-index" value="">
+
+                <label for="client-name">Client Name:</label>
+                <input type="text" id="client-name" name="client-name" required>
+
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contact" required>
+
+                <label for="pet-name">Pet Name:</label>
+                <input type="text" id="pet-name" name="pet-name" required>
+
+                <label for="pet-type">Pet Type:</label>
+                <select id="pet-type" name="pet-type" required>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="bird">Bird</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="pet-age">Pet Age:</label>
+                <input type="number" id="pet-age" name="pet-age" required>
+
+                <button type="submit" id="submit-btn">Add Client</button>
+            </form>
+        </div>
+
+        <!-- Clients List Table -->
+        <div class="clients-list">
+            <h2>Clients and Pets</h2>
+            <table id="clients-table">
+                <thead>
+                    <tr>
+                        <th>Client Name</th>
+                        <th>Contact</th>
+                        <th>Pet Name</th>
+                        <th>Pet Type</th>
+                        <th>Pet Age</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="clients-body">
+                    <!-- Dynamic rows will be added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src = "script2.js">
+        
+    </script>
+</body>
+</html>
