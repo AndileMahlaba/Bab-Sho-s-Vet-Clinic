@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Appointment - Vet Doctor Clinic</title>
-    <link rel="stylesheet" href="Book2.css">
+    <title> Book Appointment - Vet Doctor Clinic </title>
+    <link rel="stylesheet" href="Book2.css" >
 </head>
 <body class="Designs">
 
@@ -71,11 +71,60 @@
 <footer>
     <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
 </footer>
-<script>
-    function logout() {
-        sessionStorage.removeItem('loggedin');
-        window.location.href = 'Login.html'; // Redirect to login page
-    }
+  <!-- Firebase App SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"></script>
+
+  <!-- Firebase Firestore SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js"></script>
+
+
+  <script type="module">
+    // Import Firebase functions
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+    // Firebase configuration (replace with your own config)
+    const firebaseConfig = {
+        apiKey: "AIzaSyAvyoiWHOCEJOb7XwIMLPcqV5vgf26iLRk",
+        authDomain: "vet-clinic-dc537.firebaseapp.com",
+        projectId: "vet-clinic-dc537",
+        storageBucket: "vet-clinic-dc537.appspot.com",
+        messagingSenderId: "506192283099",
+        appId: "1:506192283099:web:dbd0762387c1ea980393fe"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Handle Appointment Form Submission
+    document.getElementById('bookingForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        // Get form values
+        const petName = document.getElementById('petName').value;
+        const ownerName = document.getElementById('ownerName').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const service = document.getElementById('service').value;
+
+        try {
+            // Add the appointment to Firestore
+            const docRef = await addDoc(collection(db, "appointments"), {
+                petName: petName,
+                ownerName: ownerName,
+                date: date,
+                time: time,
+                service: service
+            });
+
+            alert('Appointment booked successfully!');
+            document.getElementById('bookingForm').reset(); // Reset the form
+        } catch (error) {
+            console.error("Error adding document: ", error);
+            alert('Error booking appointment. Please try again.');
+        }
+    });
 </script>
 
 <script src="script.js"></script>
