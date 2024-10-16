@@ -54,6 +54,17 @@ CREATE TABLE Appointment (
     FOREIGN KEY (doctorID) REFERENCES Doctor(doctorID)
 );
 
+--Table for Notifications
+CREATE TABLE Notifications (
+  appointNum INT,
+  clientID INT,
+  notificationType VARCHAR(50),
+  notificationMessage VARCHAR(50),
+  notificationStatus VARCHAR(20),
+  FOREIGN KEY (appointmentID) REFERENCES Appointment(AppointNum),
+  FOREIGN KEY (clientID) REFERENCES Client(ownerID)
+);
+
 -- Table for Consultations
 CREATE TABLE Consultation (
     ConsulNum INT PRIMARY KEY IDENTITY(1,1),
@@ -92,8 +103,26 @@ CREATE TABLE Payment (
     paymentDate DATE,
     ownerID INT,
     FOREIGN KEY (ownerID) REFERENCES Client(ownerID)
-);
+); 
 
+ALTER TABLE Client ADD Password VARCHAR(10);
+ALTER TABLE AdminStaff ADD Password VARCHAR(10);
+ALTER TABLE Doctor ADD Password VARCHAR(10);
+
+-- Updating Consultation Table
+ALTER TABLE Consultation ADD ConsultantID INT;
+ALTER TABLE Consultation 
+ADD FOREIGN KEY (ConsultantID) REFERENCES Doctor(doctorID);
+
+-- Updating Appointment Table
+ALTER TABLE Appointment ADD AppointHolderID INT;
+ALTER TABLE Appointment 
+ADD FOREIGN KEY (AppointHolderID) REFERENCES Client(ownerID);
+
+-- Updating MedicalHistory Table
+ALTER TABLE MedicalHistory ADD AssignedDoctorID INT;
+ALTER TABLE MedicalHistory 
+ADD FOREIGN KEY (AssignedDoctorID) REFERENCES Doctor(doctorID);
 
 SELECT TABLE_NAME 
 FROM VetClinicDatabase.INFORMATION_SCHEMA.TABLES 
