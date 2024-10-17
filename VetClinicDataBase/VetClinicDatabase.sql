@@ -66,15 +66,6 @@ CREATE TABLE Consultation (
     FOREIGN KEY (petID) REFERENCES Pet(petID)
 );
 
---Table for Visits
-CREATE TABLE Visits (
-    visit_id INT PRIMARY KEY,
-    consultation_id INT,
-    visit_date DATE,
-    visit_purpose VARCHAR(50),
-    visit_notes VARCHAR(50),
-    FOREIGN KEY(consultationID) REFERENCES Consultation(consultationID)
-);
 -- Table for Medical Services/History
 CREATE TABLE MedicalHistory (
     serviceID INT PRIMARY KEY IDENTITY(1,1),
