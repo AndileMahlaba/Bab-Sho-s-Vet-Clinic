@@ -1,14 +1,33 @@
-const hamburger = document.getElementById('hamburger');
-const sidebar = document.getElementById('sidebar');
-
-hamburger.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Handle login logic here
 });
 
-/* JavaScript to Trigger Sliding Effect */
-document.addEventListener("DOMContentLoaded", function() {
-    const bookingSection = document.querySelector('.booking-section');
-    setTimeout(() => {
-        bookingSection.classList.add('active'); // Activate the sliding effect
-    }, 300); // Delay the effect slightly for a smoother appearance
-});
+function loadDashboardData() {
+    // Load dashboard data logic here
+}
+
+function loadAppointments() {
+    // Load appointments logic here
+}
+
+function loadClients() {
+    // Load clients logic here
+}
+
+function loadServices() {
+    // Load services logic here
+}
+
+function loadPayments() {
+    // Load payments logic here
+}
+
+// Call functions to load data on page load
+window.onload = function() {
+    loadDashboardData();
+    loadAppointments();
+    loadClients();
+    loadServices();
+    loadPayments();
+};
