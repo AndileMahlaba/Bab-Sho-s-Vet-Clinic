@@ -88,47 +88,5 @@
         <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
     </footer>
 
-    <!-- Firebase SDKs -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-
-        // Your Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAvyoiWHOCEJOb7XwIMLPcqV5vgf26iLRk",
-            authDomain: "vet-clinic-dc537.firebaseapp.com",
-            projectId: "vet-clinic-dc537",
-            storageBucket: "vet-clinic-dc537.appspot.com",
-            messagingSenderId: "506192283099",
-            appId: "1:506192283099:web:dbd0762387c1ea980393fe"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        // Handle Registration Form Submission
-        document.getElementById('registerForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password !== confirmPassword) {
-                alert('Passwords do not match.');
-                return;
-            }
-
-            try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-                alert('Registration successful!');
-                window.location.href = 'Home_Page.html';  // Redirect to home page
-            } catch (error) {
-                alert(`Error: ${error.message}`);
-            }
-        });
-    </script>
 </body>
 </html>
