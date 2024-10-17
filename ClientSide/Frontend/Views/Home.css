@@ -14,7 +14,7 @@
   
   /* Navbar Styles */
   .navbar {
-    background-color: green;
+    background-color: rgb(11, 187, 11);
     position: fixed;
     top: 0;
     width: 100%;
@@ -48,7 +48,7 @@
   }
   
   .navbar ul li a:hover {
-    background-color: #29e77f;
+    background-color: #1fd872;
   }
   
   /* Hamburger Menu (Mobile) */
