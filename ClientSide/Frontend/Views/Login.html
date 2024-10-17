@@ -16,7 +16,6 @@
         <li><a href="Services.html">Services</a></li>
         <li><a href="Payments.html">Payments</a></li>
         <li><a href="Contact.html">Contacts</a></li>
-        <li><a href="register.html">Register</a></li>
         <li><a href="Login.html">Login/Logout</a></li>
     </ul>
 </nav>
@@ -30,7 +29,6 @@
                 <li><a href="Services.html">Services</a></li>
                 <li><a href="Payments.html">Payments</a></li>
                 <li><a href="Contact.html">Contacts</a></li>
-                <li><a href="register.html">Register</a></li>
                 <li><a href="Login.html">Login/Logout</a></li>
         </ul>
     </nav>
@@ -45,8 +43,7 @@
                 <li><a href="Services.html">Services</a></li>
                 <li><a href="Payments.html">Payments</a></li>
                 <li><a href="Contact.html">Contacts</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="Login.html">Login/Logout</a></li>
+                <li class="login"><a href="Login.html">Login/Logout</a></li>
             </ul>
         </nav>
 
@@ -64,6 +61,7 @@
             <button type="submit" class="btn">Login</button>
         </form>
         <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+        <p>Login as admin <a href="register.html"> Admin page</a></p>
     </div>
 </section>
 
@@ -71,38 +69,10 @@
 <footer>
     <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
 </footer>
+<script src="script.js"></script>
 
-<script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+  <!-- Firebase App (Core SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
 
-        const email = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        // Send login data to the server
-        fetch('http://localhost:4000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === 'Login successful') {
-                sessionStorage.setItem('loggedin', 'true');
-                window.location.href = 'Home_Page.html'; // Redirect on success
-            } else {
-                alert('Invalid username or password.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('There was an error logging in. Please try again later.');
-        });
-    });
-</script>
-
-
-</body>
-</html>
+  <!-- Firebase Authentication SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-auth-compat.js"></script>
