@@ -5,6 +5,8 @@ I'm<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VET Doctor Clinic</title>
     <link rel="stylesheet" href="Home.css">
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
 </head>
 <body>
 
@@ -16,7 +18,6 @@ I'm<!DOCTYPE html>
                 <li><a href="Services.html">Services</a></li>
                 <li><a href="Payments.html">Payments</a></li>
                 <li><a href="Contact.html">Contacts</a></li>
-                <li><a href="register.html">Register</a></li>
                 <li><a href="Login.html">Login/Logout</a></li>
     </ul>
 </nav>
@@ -29,7 +30,6 @@ I'm<!DOCTYPE html>
                 <li><a href="Services.html">Services</a></li>
                 <li><a href="Payments.html">Payments</a></li>
                 <li><a href="Contact.html">Contacts</a></li>
-                <li><a href="register.html">Register</a></li>
                 <li><a href="Login.html">Login/Logout</a></li>
         </ul>
     </nav>
@@ -37,6 +37,12 @@ I'm<!DOCTYPE html>
     <!-- Main Content -->
     <div class="content">
         <nav class="navbar">
+            <div class="logo-container">
+                <a href="Home_Page.html">
+                    <img src="Doctor Pet Logo.jpg" alt="Website Logo" class="navbar-logo">
+                </a>
+            </div>
+
             <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger icon -->
             <ul class="navbar-links">
                 <li><a href="Home_Page.html">Home</a></li>
@@ -44,8 +50,7 @@ I'm<!DOCTYPE html>
                 <li><a href="Services.html">Services</a></li>
                 <li><a href="Payments.html">Payments</a></li>
                 <li><a href="Contact.html">Contacts</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="Login.html">Login/Logout</a></li>
+                <li class="login"><a href="Login.html">Login/Logout</a></li>
             </ul>
         </nav>
 
@@ -57,7 +62,7 @@ I'm<!DOCTYPE html>
         <a href="Book Appointment.html" class="btn">Book an Appointment</a>
     </div>
 </header>
-
+<div class="fullbody">
 <!-- We deliver with care Section -->
 <section class="care-section">
     <h2>We deliver with care</h2>
@@ -121,7 +126,7 @@ I'm<!DOCTYPE html>
         <button type="submit" class="btn">Book Now, Let's Help You</button>
     </form>
 </section>
-
+</div>
 <!-- Footer -->
 <footer>
     <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>

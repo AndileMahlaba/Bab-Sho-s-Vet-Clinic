@@ -21,18 +21,31 @@
     height: 60px;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
+    padding: 0 1rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid #ccc;
-  }
-  
-  .navbar ul {
+}
+
+/* Logo on the Left */
+.navbar .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    width: 80px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Navbar Links */
+.navbar ul {
     list-style: none;
     display: flex;
-  }
-  
+    gap: 10px;
+    margin-left: auto; /* Push links to the right */
+}
   .navbar ul li {
     margin: 0 5px;
   }
@@ -42,22 +55,20 @@
     text-decoration: none;
     font-weight: bold;
     padding: 14px 20px;
-    display: block;
-    transition: background 0.3s ease;
     border-radius: 5px;
-  }
+
   
-  .navbar ul li a:hover {
-    background-color: #1fd872;
-  }
-  
-  /* Hamburger Menu (Mobile) */
-  .hamburger {
-    display: none;
-    cursor: pointer;
-    font-size: 2rem;
-    color: white;
-  }
+.navbar ul li a:hover {
+  background-color: #29e77f;
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: white;
+}
   
   /* Sidebar Styles */
   .sidebar {
@@ -141,7 +152,7 @@
   
   /* Button Styles */
   .btn {
-    background-color: #007bff;
+    background-color: #31da5b;
     color: white;
     padding: 0.8rem 2rem;
     border-radius: 5px;
@@ -172,12 +183,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #333;
+    color:rgb(86, 231, 105);
     padding-top: 120px;
     box-sizing: border-box;
   }
   
   .hero-content {
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(42, 207, 9, 0.322);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius:3px ;
     padding: 2rem;
     text-align: center;
   }
@@ -185,7 +200,7 @@
   .hero-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: black;
+    color: rgb(86, 231, 105);
   }
   
   .hero-content p {
@@ -200,6 +215,9 @@
     border-radius: 10px;
     margin: 1rem 0 2rem;
   }
+  .fullbody{
+    margin-top: 20px;
+  }
   
   /* Footer */
   footer {
@@ -210,14 +228,16 @@
   }
   
   /* Media Queries for Responsive Design */
-  @media (max-width: 768px) {
+  @media (max-width: 768px)
+   {
     .navbar ul {
-      display: none;
+        display: none;
     }
-  
+
     .hamburger {
-      display: block;
+        display: block;
     }
+   
   
     .hero {
       height: 50vh;
@@ -254,4 +274,5 @@
       font-size: 1rem;
     }
   }
+
   

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Appointment - Vet Doctor Clinic</title>
-    <link rel="stylesheet" href="Book2.css">
+    <title> Book Appointment - Vet Doctor Clinic </title>
+    <link rel="stylesheet" href="Book2.css" >
 </head>
 <body class="Designs">
 
@@ -19,8 +19,7 @@
                 <li><a href="Services.html">Services</a></li>
                 <li><a href="Payments.html">Payments</a></li>
                 <li><a href="Contact.html">Contacts</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="Login.html">Login/Logout</a></li>
+                <li class="login"><a href="Login.html">Login/Logout</a></li>
         </ul>
     </nav>
 
@@ -34,7 +33,6 @@
                 <li><a href="Services.html">Services</a></li>
                 <li><a href="Payments.html">Payments</a></li>
                 <li><a href="Contact.html">Contacts</a></li>
-                <li><a href="register.html">Register</a></li>
                 <li><a href="Login.html">Login/Logout</a></li>
             </ul>
         </nav>
@@ -74,37 +72,6 @@
     <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
 </footer>
 
-<script>
-    document.getElementById('bookingForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const petName = document.getElementById('petName').value;
-        const ownerName = document.getElementById('ownerName').value;
-        const date = document.getElementById('date').value;
-        const time = document.getElementById('time').value;
-        const service = document.getElementById('service').value;
-
-        fetch('http://localhost:4000/add-appointment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ appointTime: time, appointDate: date, appointStatus: 'Pending', AdminID: 1, ownerID: 1, petID: 1, doctorID: 1 })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === 'Appointment booked successfully') {
-                alert('Your appointment has been booked.');
-            } else {
-                alert('Failed to book appointment.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('There was an error booking the appointment. Please try again.');
-        });
-    });
-</script>
 
 </body>
 </html>
