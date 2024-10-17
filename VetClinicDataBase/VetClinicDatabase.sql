@@ -54,17 +54,15 @@ CREATE TABLE Appointment (
     FOREIGN KEY (doctorID) REFERENCES Doctor(doctorID)
 );
 
---Table for Notifications
-CREATE TABLE Notifications (
-  appointNum INT,
-  clientID INT,
-  notificationType VARCHAR(50),
-  notificationMessage VARCHAR(50),
-  notificationStatus VARCHAR(20),
-  FOREIGN KEY (appointmentID) REFERENCES Appointment(AppointNum),
-  FOREIGN KEY (clientID) REFERENCES Client(ownerID)
+--Table for Visits
+CREATE TABLE Visits (
+    visit_id INT PRIMARY KEY,
+    consultation_id INT,
+    visit_date DATE,
+    visit_purpose VARCHAR(50),
+    visit_notes VARCHAR(50)
+    FOREIGN KEY(consultationID) REFERENCES Consultation(consultationID),
 );
-
 -- Table for Consultations
 CREATE TABLE Consultation (
     ConsulNum INT PRIMARY KEY IDENTITY(1,1),
