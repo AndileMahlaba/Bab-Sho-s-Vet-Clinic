@@ -52,33 +52,35 @@
     <section class="register-section">
         <div class="register-container">
             <h2>Create an Account</h2>
+            
             <form id="registerForm">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
-
+            
                 <label for="Firstname">First Name:</label>
                 <input type="text" id="name" name="name" required>
-
+            
                 <label for="Lastname">Last Name:</label>
                 <input type="text" id="lastname" name="lastname" required>
-
+            
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-
+            
                 <label for="contact">Contact:</label>
                 <input type="tel" id="Contact" name="Contact" required>
-
-                <label for="Physicaladdress">Pysical address:</label>
-                <input type="address" id=" Physicaladdress" name="Physicaladdress" required>
-
+            
+                <label for="Physicaladdress">Physical Address:</label> <!-- Correct the spelling here -->
+                <input type="text" id="Physicaladdress" name="Physicaladdress" required> <!-- Correct the id -->
+            
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
-
+            
                 <label for="confirmPassword">Confirm Password:</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" required>
-
+            
                 <button type="submit" class="btn">Register</button>
             </form>
+            
             <p>Already have an account? <a href="Login.html">Login here</a></p>
         </div>
     </section>
@@ -90,47 +92,46 @@
 
     <script>
         document.getElementById('registerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-        
-            const username = document.getElementById('username').value;
-            const ownerFName = document.getElementById('name').value;
-            const ownerLName = document.getElementById('lastname').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('Contact').value;
-            const password = document.getElementById('password').value;
-            const ownerPhy_addr = document.getElementById('Physicaladdress').value;
-        
-            fetch('http://localhost:4000/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username,
-                    ownerFName,
-                    ownerLName,
-                    email,
-                    phone,
-                    password,
-                    ownerPhy_addr
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message === 'Client registered successfully') {
-                    window.location.href = 'Login.html'; // Redirect to login after successful registration
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Registration failed. Please try again.');
-            });
-        });
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const ownerFName = document.getElementById('name').value;
+    const ownerLName = document.getElementById('lastname').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('Contact').value;
+    const password = document.getElementById('password').value;
+    const ownerPhy_addr = document.getElementById('Physicaladdress').value; // This now correctly matches the id
+
+    fetch('http://localhost:4000/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username,
+            ownerFName,
+            ownerLName,
+            email,
+            phone,
+            password,
+            ownerPhy_addr
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === 'Client registered successfully') {
+            window.location.href = 'Login.html'; // Redirect to login after successful registration
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Registration failed. Please try again.');
+    });
+});
+
     </script>
     
-    
-
   </body>
   </html>
