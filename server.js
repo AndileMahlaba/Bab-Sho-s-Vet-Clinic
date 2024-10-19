@@ -41,8 +41,9 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'ClientSide/Frontend/Views/Home_Page.html'));
 });
 
+//Route to the register
 app.post('/register', (req, res) => {
-    const { ownerFName, ownerLName, email, phone, phyAddr } = req.body; // Added physical address
+    const { ownerFName, ownerLName, email, phone, password, ownerPhy_addr, username } = req.body;
 
     db.query('SELECT * FROM Client WHERE ownerEmail_addr = ?', [email], (err, results) => {
         if (err) return res.status(500).json({ message: 'Database error' });
@@ -51,21 +52,29 @@ app.post('/register', (req, res) => {
             return res.status(400).json({ message: 'Email already in use' });
         }
 
-        // Insert new client into the Client table (without password since it's not in the table)
-        const newClient = {
-            ownerFName,
-            ownerLName,
-            ownerEmail_addr: email,
-            ownerPhy_addr: phyAddr,
-            ownerContactNum: phone
-        };
+        // Hash the password
+        bcrypt.hash(password, 10, (err, hashedPassword) => {
+            if (err) return res.status(500).json({ message: 'Error hashing password' });
 
-        db.query('INSERT INTO Client SET ?', newClient, (err, result) => {
-            if (err) return res.status(500).json({ message: 'Database error' });
-            res.json({ message: 'Client registered successfully' });
+            // Insert new client with hashed password
+            const newClient = {
+                ownerFName,
+                ownerLName,
+                ownerEmail_addr: email,
+                ownerPhy_addr,
+                ownerContactNum: phone,
+                password: hashedPassword, // Store hashed password
+                username
+            };
+
+            db.query('INSERT INTO Client SET ?', newClient, (err, result) => {
+                if (err) return res.status(500).json({ message: 'Database error' });
+                res.json({ message: 'Client registered successfully' });
+            });
         });
     });
 });
+
 
 // Login client
 app.post('/login', (req, res) => {
@@ -91,6 +100,7 @@ app.post('/login', (req, res) => {
         });
     });
 });
+
 
 // Route to fetch all clients
 app.get('/clients', (req, res) => {
