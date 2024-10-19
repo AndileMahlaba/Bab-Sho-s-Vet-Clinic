@@ -69,5 +69,37 @@
 <footer>
     <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
 </footer>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('username').value; // Using email for login
+        const password = document.getElementById('password').value;
+
+        fetch('http://localhost:4000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Login successful') {
+                sessionStorage.setItem('loggedin', 'true');
+                window.location.href = 'Home_Page.html'; // Redirect on success
+            } else {
+                alert('Invalid username or password.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error logging in. Please try again later.');
+        });
+    });
+</script>
+
+
 </body>
   <html>
