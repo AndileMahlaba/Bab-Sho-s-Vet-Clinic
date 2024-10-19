@@ -1,26 +1,71 @@
-<section id="adminClients">
-    <h2>Admin Clients Page</h2>
-    <div>
-        <h3>Client Name</h3>
-        <p>Contact Information:</p>
-        <p>Email: <span id="clientEmail"></span></p>
-        <p>Phone: <span id="clientPhone"></span></p>
-        <h4>Registered Pets:</h4>
-        <ul id="registeredPetsList">
-           
-            
-        </ul>
-        <h4>Appointment History:</h4>
-        <ul id="appointmentHistoryList">
-           
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Client Page</title>
+    <link rel="stylesheet" href="clientAdmin.css">
+    <style>
+      
+    </style>
+</head>
+<body>
+    <h1>Client's Information</h1>
+    <form id="clientForm">
 
-        </ul>
-        <button id="editProfileBtn">Edit Profile</button>
-        <textarea id="clientNotes" placeholder="Client Notes/Comments"></textarea>
-    </div>
-</section>
-</main>
+        <label for="id">Client's ID :</label>
+        <input type="id" id="id" required placeholder="Enter client's ID: "/>
+        <span class="ërror" id="nameError"></span>
+        <br/>
 
-<script src="script.js"></script>
+
+        <label for="name">Client's name :</label>
+        <input type="name" id="name" required placeholder="Enter client's name : "/>
+        <span class="ërror" id="nameError"></span>
+        <br/>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required placeholder="Enter client's email" />
+        <span class="error" id="emailError"></span>
+        <br/>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" required placeholder="Enter client's phone number"  minlength="10"  maxlength="10" />
+        <span class="error" id="phoneError"></span>
+        <br/>
+
+        <label for="pets">Registered pet:</label>
+        <input type="text" id="pets" placeholder="Enter pet names (comma separated)" minlength="1" maxlength="100" />
+        <span class="error" id="petsError"></span>
+        <br/>
+
+        <label for="address">Physical address:</label>
+        <input type="text" id="address" placeholder="Enter the address"  />
+        <span class="error" id="invalid"></span>
+        <br/>
+
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="loading" id="loadingSpinner">Loading...</div>
+    <div id="feedback"></div>
+
+</ul>
+<button id="editProfileBtn">Edit Profile</button>
+<div id="editProfileModal" style="display:none;">
+    <form id="editProfileForm">
+        <input type="text" id="editName" value="Current Name">
+        <input type="email" id="editEmail" value="Current Email">
+        <input type="tel" id="editPhone" value="Current Phone">
+    </form>
+</div>
+    
+<textarea id="clientNotes" placeholder="Client Notes/Comments"></textarea>
+        <button type="submit">Save</button>
+
+        
+    </script>
 </body>
 </html>
+
