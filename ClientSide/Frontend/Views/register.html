@@ -91,21 +91,29 @@
     <script>
         document.getElementById('registerForm').addEventListener('submit', function(event) {
             event.preventDefault();
-    
-            const Username = document.getElementById('Username').value;
-            const Email = document.getElementById('Email').value;
+        
+            const username = document.getElementById('username').value;
+            const ownerFName = document.getElementById('name').value;
+            const ownerLName = document.getElementById('lastname').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('Contact').value;
             const password = document.getElementById('password').value;
-            const FirstName = document.getElementById('FirstName').value;
-            const LastName = document.getElementById('LastName').value;
-            const Contact = document.getElementById('Contact').value;
-            const Physicaladdress = document.getElementById('Physicaladdress').value;
-    
+            const ownerPhy_addr = document.getElementById('Physicaladdress').value;
+        
             fetch('http://localhost:4000/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ ownerFName: username, ownerLName: '', email: email, phone: '', password: password })
+                body: JSON.stringify({
+                    username,
+                    ownerFName,
+                    ownerLName,
+                    email,
+                    phone,
+                    password,
+                    ownerPhy_addr
+                })
             })
             .then(response => response.json())
             .then(data => {
@@ -121,6 +129,7 @@
             });
         });
     </script>
+    
     
 
   </body>
