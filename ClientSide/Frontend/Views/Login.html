@@ -88,7 +88,12 @@
         .then(data => {
             if (data.message === 'Login successful') {
                 sessionStorage.setItem('loggedin', 'true');
-                window.location.href = 'Home_Page.html'; // Redirect on success
+                // Check if the user is an admin or a client
+                if (data.role === 'admin') {
+                    window.location.href = 'Admin Dashboard.html'; // Redirect to admin dashboard
+                } else {
+                    window.location.href = 'Home_Page.html'; // Redirect to client homepage
+                }
             } else {
                 alert('Invalid username or password.');
             }

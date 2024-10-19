@@ -80,26 +80,49 @@ app.post('/register', (req, res) => {
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
 
-    db.query('SELECT * FROM Client WHERE ownerEmail_addr = ?', [email], (err, results) => {
+    // Check if the user is an Admin
+    db.query('SELECT * FROM AdminStaff WHERE Email = ?', [email], (err, adminResults) => {
         if (err) return res.status(500).json({ message: 'Database error' });
 
-        if (results.length === 0) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+        if (adminResults.length > 0) {
+            const admin = adminResults[0];
+
+            // Compare the password
+            bcrypt.compare(password, admin.password, (err, isMatch) => {
+                if (err) return res.status(500).json({ message: 'Error comparing passwords' });
+
+                if (isMatch) {
+                    req.session.userId = admin.AdminID;
+                    res.json({ message: 'Login successful', role: 'admin' });
+                } else {
+                    res.status(401).json({ message: 'Invalid credentials' });
+                }
+            });
+        } else {
+            // Check if the user is a Client
+            db.query('SELECT * FROM Client WHERE ownerEmail_addr = ?', [email], (err, clientResults) => {
+                if (err) return res.status(500).json({ message: 'Database error' });
+
+                if (clientResults.length === 0) {
+                    return res.status(401).json({ message: 'Invalid credentials' });
+                }
+
+                const client = clientResults[0];
+                bcrypt.compare(password, client.password, (err, isMatch) => {
+                    if (err) return res.status(500).json({ message: 'Error comparing passwords' });
+
+                    if (isMatch) {
+                        req.session.userId = client.ownerID;
+                        res.json({ message: 'Login successful', role: 'client' });
+                    } else {
+                        res.status(401).json({ message: 'Invalid credentials' });
+                    }
+                });
+            });
         }
-
-        const client = results[0];
-        bcrypt.compare(password, client.password, (err, isMatch) => {
-            if (err) return res.status(500).json({ message: 'Error comparing passwords' });
-
-            if (isMatch) {
-                req.session.userId = client.ownerID;
-                res.json({ message: 'Login successful' });
-            } else {
-                res.status(401).json({ message: 'Invalid credentials' });
-            }
-        });
     });
 });
+
 
 
 // Route to fetch all clients
