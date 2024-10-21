@@ -57,6 +57,7 @@
             <input type="number" placeholder="Owner ID" name="ownerID" required>
             <button type="submit">Add Payment</button>
         </form>
+
         <table>
             <thead>
                 <tr>
@@ -69,6 +70,7 @@
                     <th>Amount</th>
                     <th>Payment Date</th>
                     <th>Owner ID</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="paymentTableBody">
@@ -80,42 +82,63 @@
     <button id="mode-toggle">Switch to Dark Mode</button>
 
     <script>
+        // Target the payment form and table body
+        const paymentForm = document.getElementById('paymentForm');
+        const paymentTableBody = document.getElementById('paymentTableBody');
+        let paymentID = localStorage.getItem('paymentID') ? parseInt(localStorage.getItem('paymentID')) : 1;
+
+        // Handle form submission to add a payment
+        paymentForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent page reload
+
+            // Gather form data
+            const formData = new FormData(paymentForm);
+            const paymentMethod = formData.get('paymentMethod');
+            const accountNum = formData.get('accountNum');
+            const accountHolder = formData.get('accountHolder');
+            const expDate = formData.get('accountExpDate');
+            const cvv = formData.get('accountCVV');
+            const amount = formData.get('paymentAmt');
+            const paymentDate = formData.get('paymentDate');
+            const ownerID = formData.get('ownerID');
+
+            // Create a new row with the payment data
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${paymentID}</td>
+                <td>${paymentMethod}</td>
+                <td>${accountNum}</td>
+                <td>${accountHolder}</td>
+                <td>${expDate}</td>
+                <td>${cvv}</td>
+                <td>${amount}</td>
+                <td>${paymentDate}</td>
+                <td>${ownerID}</td>
+                <td><button class="delete-btn">Delete</button></td>
+            `;
+
+            // Append the new row to the table
+            paymentTableBody.appendChild(newRow);
+
+            // Add event listener to the delete button
+            newRow.querySelector('.delete-btn').addEventListener('click', () => {
+                paymentTableBody.removeChild(newRow); // Remove the row
+            });
+
+            // Increment and store the payment ID
+            localStorage.setItem('paymentID', ++paymentID);
+
+            // Reset the form
+            paymentForm.reset();
+        });
+
+        // Dark mode toggle
         const toggleButton = document.getElementById('mode-toggle');
         toggleButton.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            toggleButton.textContent = document.body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
-        });
-
-        // Handle form submission
-        document.getElementById('paymentForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Gather form data
-            const formData = new FormData(event.target);
-            const paymentData = {};
-            formData.forEach((value, key) => {
-                paymentData[key] = value;
-            });
-
-            // Create a new table row
-            const tableRow = document.createElement('tr');
-            tableRow.innerHTML = `
-                <td>${paymentData.paymentNumber || 'N/A'}</td>
-                <td>${paymentData.paymentMethod}</td>
-                <td>${paymentData.accountNum}</td>
-                <td>${paymentData.accountHolder}</td>
-                <td>${paymentData.accountExpDate}</td>
-                <td>${paymentData.accountCVV}</td>
-                <td>${paymentData.paymentAmt}</td>
-                <td>${paymentData.paymentDate}</td>
-                <td>${paymentData.ownerID}</td>
-            `;
-
-            // Append the new row to the table body
-            document.getElementById('paymentTableBody').appendChild(tableRow);
-
-            // Optionally, clear the form
-            event.target.reset();
+            toggleButton.textContent = document.body.classList.contains('dark-mode')
+                ? 'Switch to Light Mode'
+                : 'Switch to Dark Mode';
         });
     </script>
 

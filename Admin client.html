@@ -4,68 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Client Page</title>
-    <link rel="stylesheet" href="clientAdmin.css">
-    <style>
-      
-    </style>
+    <link rel="stylesheet" href="Admin client.css">
 </head>
 <body>
     <h1>Client's Information</h1>
+    
     <form id="clientForm">
-
-        <label for="id">Client's ID :</label>
-        <input type="id" id="id" required placeholder="Enter client's ID: "/>
-        <span class="ërror" id="nameError"></span>
+        <label for="id">Client's ID:</label>
+        <input type="text" id="clientID" required placeholder="Enter client's ID" />
         <br/>
 
-
-        <label for="name">Client's name :</label>
-        <input type="name" id="name" required placeholder="Enter client's name : "/>
-        <span class="ërror" id="nameError"></span>
+        <label for="name">Client's Name:</label>
+        <input type="text" id="clientName" required placeholder="Enter client's name" />
         <br/>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" required placeholder="Enter client's email" />
-        <span class="error" id="emailError"></span>
+        <input type="email" id="clientEmail" required placeholder="Enter client's email" />
         <br/>
 
         <label for="phone">Phone:</label>
-        <input type="tel" id="phone" required placeholder="Enter client's phone number"  minlength="10"  maxlength="10" />
-        <span class="error" id="phoneError"></span>
+        <input type="tel" id="clientPhone" required placeholder="Enter client's phone number" minlength="10" maxlength="10" />
         <br/>
 
-        <label for="pets">Registered pet:</label>
-        <input type="text" id="pets" placeholder="Enter pet names (comma separated)" minlength="1" maxlength="100" />
-        <span class="error" id="petsError"></span>
+        <label for="pets">Registered Pets:</label>
+        <input type="text" id="clientPets" placeholder="Enter pet names (comma-separated)" />
         <br/>
 
-        <label for="address">Physical address:</label>
-        <input type="text" id="address" placeholder="Enter the address"  />
-        <span class="error" id="invalid"></span>
+        <label for="address">Physical Address:</label>
+        <input type="text" id="clientAddress" placeholder="Enter the address" />
         <br/>
 
-
-        <button type="submit">Submit</button>
+        <button type="submit">Add Client</button>
     </form>
 
-    <div class="loading" id="loadingSpinner">Loading...</div>
-    <div id="feedback"></div>
+    <h2>Client List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Client ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Pets</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="clientTableBody">
+            <!-- Client data will be inserted here -->
+        </tbody>
+    </table>
 
-</ul>
-<button id="editProfileBtn">Edit Profile</button>
-<div id="editProfileModal" style="display:none;">
-    <form id="editProfileForm">
-        <input type="text" id="editName" value="Current Name">
-        <input type="email" id="editEmail" value="Current Email">
-        <input type="tel" id="editPhone" value="Current Phone">
-    </form>
-</div>
-    
-<textarea id="clientNotes" placeholder="Client Notes/Comments"></textarea>
-        <button type="submit">Save</button>
+    <script>
+        const clientForm = document.getElementById('clientForm');
+        const clientTableBody = document.getElementById('clientTableBody');
 
-        
+        // Add event listener for form submission
+        clientForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect input data
+            const clientID = document.getElementById('clientID').value;
+            const clientName = document.getElementById('clientName').value;
+            const clientEmail = document.getElementById('clientEmail').value;
+            const clientPhone = document.getElementById('clientPhone').value;
+            const clientPets = document.getElementById('clientPets').value;
+            const clientAddress = document.getElementById('clientAddress').value;
+
+            // Create a new row
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${clientID}</td>
+                <td>${clientName}</td>
+                <td>${clientEmail}</td>
+                <td>${clientPhone}</td>
+                <td>${clientPets}</td>
+                <td>${clientAddress}</td>
+                <td><button class="delete-btn">Delete</button></td>
+            `;
+
+            // Append the row to the table body
+            clientTableBody.appendChild(newRow);
+
+            // Add event listener to the delete button
+            newRow.querySelector('.delete-btn').addEventListener('click', () => {
+                clientTableBody.removeChild(newRow); // Remove the row
+            });
+
+            // Reset the form after submission
+            clientForm.reset();
+        });
     </script>
 </body>
 </html>
-

@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Staff</title>
+    <title>Admin Client Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar">
+     <!-- Navbar -->
+     <nav class="navbar">
         <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger icon -->
         <ul class="menu">
             <li><a href="Admin Dashboard.html">Dashboard</a></li>
-            <li><a href="Appointment Page.html">Appointments</a></li>
+            <li><a href="Manage Appointments.html">Appointments</a></li>
             <li><a href="Consultation Page.html">Consultations</a></li>
             <li><a href="Client Page.html">Clients</a></li>
             <li><a href="Pet Page.html">Pets</a></li>
@@ -42,73 +41,93 @@
             <li><a href="#">Sign out</a></li>
         </ul>
     </nav>
+    <h1>Client's Information</h1>
+    
+    <form id="clientForm">
+        <label for="id">Client's ID:</label>
+        <input type="text" id="clientID" required placeholder="Enter client's ID" />
+        <br/>
 
-    <div class="container">
-        <h1>Admin Staff</h1>
-        <form id="adminForm">
-            <input type="text" placeholder="Initials" name="adminInitials" required>
-            <input type="text" placeholder="Surname" name="adminSurname" required>
-            <input type="tel" placeholder="Contact Number" name="adminContactNum" required pattern="[0-9]{10}" title="Enter a valid 10-digit contact number">
-            <button type="submit">Add Admin Staff</button>
-        </form>
-        <table>
-            <thead>
-                <tr>
-                    <th>Admin ID</th>
-                    <th>Initials</th>
-                    <th>Surname</th>
-                    <th>Contact Number</th>
-                </tr>
-            </thead>
-            <tbody id="adminTableBody">
-                <!-- Rows for admin staff data will be inserted here -->
-            </tbody>
-        </table>
-    </div>
+        <label for="name">Client's Name:</label>
+        <input type="text" id="clientName" required placeholder="Enter client's name" />
+        <br/>
 
-    <button id="mode-toggle">Switch to Dark Mode</button>
+        <label for="email">Email:</label>
+        <input type="email" id="clientEmail" required placeholder="Enter client's email" />
+        <br/>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="clientPhone" required placeholder="Enter client's phone number" minlength="10" maxlength="10" />
+        <br/>
+
+        <label for="pets">Registered Pets:</label>
+        <input type="text" id="clientPets" placeholder="Enter pet names (comma-separated)" />
+        <br/>
+
+        <label for="address">Physical Address:</label>
+        <input type="text" id="clientAddress" placeholder="Enter the address" />
+        <br/>
+
+        <button type="submit">Add Client</button>
+    </form>
+
+    <h2>Client List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Client ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Pets</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="clientTableBody">
+            <!-- Client data will be inserted here -->
+        </tbody>
+    </table>
 
     <script>
-        const toggleButton = document.getElementById('mode-toggle');
-        toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            toggleButton.textContent = document.body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
-        });
+        const clientForm = document.getElementById('clientForm');
+        const clientTableBody = document.getElementById('clientTableBody');
 
         // Add event listener for form submission
-        const adminForm = document.getElementById('adminForm');
-        const adminTableBody = document.getElementById('adminTableBody');
-        let adminID = localStorage.getItem('adminID') ? parseInt(localStorage.getItem('adminID')) : 1;
+        clientForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent default form submission
 
-        adminForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Gather input data
-            const formData = new FormData(adminForm);
-            const initials = formData.get('adminInitials');
-            const surname = formData.get('adminSurname');
-            const contactNum = formData.get('adminContactNum');
+            // Collect input data
+            const clientID = document.getElementById('clientID').value;
+            const clientName = document.getElementById('clientName').value;
+            const clientEmail = document.getElementById('clientEmail').value;
+            const clientPhone = document.getElementById('clientPhone').value;
+            const clientPets = document.getElementById('clientPets').value;
+            const clientAddress = document.getElementById('clientAddress').value;
 
             // Create a new row
             const newRow = document.createElement('tr');
             newRow.innerHTML = `
-                <td>${adminID}</td>
-                <td>${initials}</td>
-                <td>${surname}</td>
-                <td>${contactNum}</td>
+                <td>${clientID}</td>
+                <td>${clientName}</td>
+                <td>${clientEmail}</td>
+                <td>${clientPhone}</td>
+                <td>${clientPets}</td>
+                <td>${clientAddress}</td>
+                <td><button class="delete-btn">Delete</button></td>
             `;
 
-            // Append the new row to the table
-            adminTableBody.appendChild(newRow);
+            // Append the row to the table body
+            clientTableBody.appendChild(newRow);
 
-            // Increment and save the admin ID
-            localStorage.setItem('adminID', ++adminID);
+            // Add event listener to the delete button
+            newRow.querySelector('.delete-btn').addEventListener('click', () => {
+                clientTableBody.removeChild(newRow); // Remove the row
+            });
 
-            // Reset the form
-            adminForm.reset();
+            // Reset the form after submission
+            clientForm.reset();
         });
     </script>
-    
-    <script src="script.js"></script>
 </body>
 </html>

@@ -1,3 +1,24 @@
+// server.js
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+ 
+let appointment = [];
+
+app.post('/api/appointments', (req, res) => {
+    const appointment = req.body;
+    appointments.push({ ...appointment, id: Date.now(), status: 'Scheduled' });
+    res.status(201).json(appointment);
+});
+
+app.get('/api/appointments', (req, res) => {
+    res.json(appointment);
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));
+
+
 
 let appointments = [];
         let editingIndex = null;

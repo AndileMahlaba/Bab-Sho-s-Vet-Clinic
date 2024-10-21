@@ -20,10 +20,52 @@
                 </tr>
             </thead>
             <tbody id="servicesTableBody">
+                <td><button class="delete-btn">Delete</button></td>
                 <!-- Service rows will be populated here -->
             </tbody>
         </table>
     </div>
+    <script>
+    // Add event listener for form submission
+const adminForm = document.getElementById('adminForm');
+const adminTableBody = document.getElementById('adminTableBody');
+let adminID = localStorage.getItem('adminID') ? parseInt(localStorage.getItem('adminID')) : 1;
+
+adminForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Gather input data
+    const formData = new FormData(adminForm);
+    const initials = formData.get('adminInitials');
+    const surname = formData.get('adminSurname');
+    const contactNum = formData.get('adminContactNum');
+
+    // Create a new row
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${adminID}</td>
+        <td>${initials}</td>
+        <td>${surname}</td>
+        <td>${contactNum}</td>
+        <td><button class="delete-btn">Delete</button></td>
+    `;
+
+    // Append the new row to the table
+    adminTableBody.appendChild(newRow);
+
+    // Add event listener to the delete button
+    newRow.querySelector('.delete-btn').addEventListener('click', () => {
+        adminTableBody.removeChild(newRow); // Remove the row from the table
+    });
+
+    // Increment and save the admin ID
+    localStorage.setItem('adminID', ++adminID);
+
+    // Reset the form
+    adminForm.reset();
+});
+
+</script>
     <script src="script.js"></script>
 </body>
 </html>
