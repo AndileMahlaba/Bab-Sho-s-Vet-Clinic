@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payments</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Payment.css">
 </head>
-
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger icon -->
-        <ul class="menu">
-            <li><a href="Admin Dashboard.html">Dashboard</a></li>
-            <li><a href="Appointment Page.html">Appointments</a></li>
-            <li><a href="Consultation Page.html">Consultations</a></li>
-            <li><a href="Client Page.html">Clients</a></li>
-            <li><a href="Pet Page.html">Pets</a></li>
-            <li><a href="Medical History Page.html">Medical History</a></li>
-            <li><a href="Payment Page.html">Payments</a></li>
-        </ul>
-        <ul class="settings-menu">
-            <li><a href="#">Settings</a></li>
-            <li><a href="Admin_Login.html">Sign out</a></li>
-        </ul>
-    </nav>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="hamburger" id="hamburger">&#9776;</div>
+            <ul class="menu">
+                <li><a href="Admin Dashboard.html">Dashboard</a></li>
+                <li><a href="Appointment Page.html">Appointments</a></li>
+                <li><a href="Consultation Page.html">Consultations</a></li>
+                <li><a href="Client Page.html">Clients</a></li>
+                <li><a href="Pet Page.html">Pets</a></li>
+                <li><a href="Medical History Page.html">Medical History</a></li>
+                <li><a href="Payment Page.html">Payments</a></li>
+            </ul>
+            <ul class="settings-menu">
+                <li><a href="#">Settings</a></li>
+                <li><a href="Admin_Login.html">Sign out</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- Sidebar -->
     <nav class="sidebar" id="sidebar">
@@ -44,42 +45,46 @@
         </ul>
     </nav>
 
-    <div class="container">
+    <main class="container">
         <h1>Payments</h1>
-        <form id="paymentForm">
-            <input type="text" placeholder="Payment Method" name="paymentMethod" required>
-            <input type="text" placeholder="Account Number" name="accountNum" required>
-            <input type="text" placeholder="Account Holder" name="accountHolder" required>
-            <input type="date" name="accountExpDate" required>
-            <input type="number" placeholder="CVV" name="accountCVV" required>
-            <input type="number" placeholder="Amount" name="paymentAmt" required>
-            <input type="date" name="paymentDate" required>
-            <input type="number" placeholder="Owner ID" name="ownerID" required>
-            <button type="submit">Add Payment</button>
-        </form>
-        <table>
-            <thead>
-                <tr>
-                    <th>Payment Number</th>
-                    <th>Payment Method</th>
-                    <th>Account Number</th>
-                    <th>Account Holder</th>
-                    <th>Expiration Date</th>
-                    <th>CVV</th>
-                    <th>Amount</th>
-                    <th>Payment Date</th>
-                    <th>Owner ID</th>
-                </tr>
-            </thead>
-            <tbody id="paymentTableBody">
-                <!-- Rows for payment data will be inserted here -->
-            </tbody>
-        </table>
-    </div>
+        <div class="payment-container">
+            <form id="paymentForm">
+                <input type="text" placeholder="Payment Method" name="paymentMethod" required>
+                <input type="text" placeholder="Account Number" name="accountNum" required>
+                <input type="text" placeholder="Account Holder" name="accountHolder" required>
+                <input type="date" name="accountExpDate" required>
+                <input type="number" placeholder="CVV" name="accountCVV" required min="100" max="999">
+                <input type="number" placeholder="Amount" name="paymentAmt" required min="0" step="0.01">
+                <input type="date" name="paymentDate" required>
+                <input type="number" placeholder="Owner ID" name="ownerID" required>
+                <button type="submit">Pay Now</button>
+                <div class="error-message" id="error-message" style="display:none;"></div> <!-- Initially hidden -->
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Payment Number</th>
+                        <th>Payment Method</th>
+                        <th>Account Number</th>
+                        <th>Account Holder</th>
+                        <th>Expiration Date</th>
+                        <th>CVV</th>
+                        <th>Amount</th>
+                        <th>Payment Date</th>
+                        <th>Owner ID</th>
+                    </tr>
+                </thead>
+                <tbody id="paymentTableBody">
+                    <!-- Rows for payment data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
 
-    <button id="mode-toggle">Switch to Dark Mode</button>
+        <button id="mode-toggle">Switch to Dark Mode</button>
+    </main>
 
     <script>
+        // Toggle Dark Mode
         const toggleButton = document.getElementById('mode-toggle');
         toggleButton.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
@@ -114,11 +119,16 @@
             // Append the new row to the table body
             document.getElementById('paymentTableBody').appendChild(tableRow);
 
-            // Optionally, clear the form
+            // Clear the form
             event.target.reset();
         });
-    </script>
 
-    <script src="script.js"></script>
+        // Toggle Sidebar
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
