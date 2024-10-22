@@ -18,55 +18,64 @@ html, body {
 
 /* Navbar Styles */
 .navbar {
-    background-color: green;
+    background-color: rgb(11, 187, 11); /* Matching your preferred green */
     position: fixed;
-    width: 100%;
     top: 0;
-    left: 0;
+    width: 100%;
     height: 60px;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
+    padding: 0 1rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
-
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Logo on the Left */
+  .navbar .logo-container {
     display: flex;
-}
-
-.navbar ul li {
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    width: 80px; /* Adjust size as needed */
+    height: 62px;
+  }
+  /* Navbar Links */
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin-left: auto; /* Push links to the right */
+  }
+  
+  .navbar ul li {
     margin: 0 5px;
-}
-
-.navbar ul li a {
+  }
+  
+  .navbar ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     padding: 14px 20px;
-    display: block;
-    transition: background 0.3s ease;
-}
-
-.navbar ul li a:hover {
-    background-color: #555;
     border-radius: 5px;
-}
-
-/* Hamburger menu */
-.hamburger {
+  }
+  
+  .navbar ul li a:hover {
+    background-color: #29e77f;
+  }
+  
+  /* Hamburger menu (mobile) */
+  .hamburger {
     display: none;
     cursor: pointer;
     font-size: 2rem;
     color: white;
-}
-
- /* Sidebar Styles */
- .sidebar {
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
     position: fixed;
     top: 0;
     left: -250px;
@@ -119,7 +128,7 @@ html, body {
   .padding-small {
     padding: 0.8rem;
   }
-
+  
 /* Payment Section */
 
 .payment-container {
