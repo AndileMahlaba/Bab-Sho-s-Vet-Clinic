@@ -18,7 +18,8 @@
     "express-session": "^1.18.1",
     "mssql": "^11.0.1",
     "mysql": "^2.18.1",
-    "mysql2": "^3.11.3"
+    "mysql2": "^3.11.3",
+    "postgres": "^3.4.4"
   },
   "description": ""
 }

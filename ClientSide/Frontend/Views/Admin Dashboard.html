@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet Clinic Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS -->
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#clients">Clients</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+                <li><a href="#admins">Admins</a></li>
+                <li><a href="#pets">Pets</a></li>
+                <li><a href="#appointments">Appointments</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="clients">
+            <h2>Clients</h2>
+            <button onclick="showClientForm()">Add Client</button>
+            <div id="client-form" style="display: none;">
+                <h3>Add Client</h3>
+                <input type="text" id="clientFName" placeholder="First Name" required>
+                <input type="text" id="clientLName" placeholder="Last Name" required>
+                <input type="email" id="clientEmail" placeholder="Email" required>
+                <input type="text" id="clientPhone" placeholder="Phone" required>
+                <input type="text" id="clientAddress" placeholder="Address" required>
+                <button onclick="addClient()">Submit</button>
+            </div>
+            <div id="client-list"></div>
+        </section>
+
+        <section id="doctors">
+            <h2>Doctors</h2>
+            <button onclick="showDoctorForm()">Add Doctor</button>
+            <div id="doctor-form" style="display: none;">
+                <h3>Add Doctor</h3>
+                <input type="text" id="doctorInitials" placeholder="Initials" required>
+                <input type="text" id="doctorSurname" placeholder="Surname" required>
+                <input type="text" id="doctorContact" placeholder="Contact Number" required>
+                <button onclick="addDoctor()">Submit</button>
+            </div>
+            <div id="doctor-list"></div>
+        </section>
+
+        <section id="admins">
+            <h2>Admin Staff</h2>
+            <button onclick="showAdminForm()">Add Admin</button>
+            <div id="admin-form" style="display: none;">
+                <h3>Add Admin</h3>
+                <input type="text" id="adminInitials" placeholder="Initials" required>
+                <input type="text" id="adminSurname" placeholder="Surname" required>
+                <input type="text" id="adminContact" placeholder="Contact Number" required>
+                <input type="email" id="adminEmail" placeholder="Email" required>
+                <button onclick="addAdmin()">Submit</button>
+            </div>
+            <div id="admin-list"></div>
+        </section>
+
+        <section id="pets">
+            <h2>Pets</h2>
+            <button onclick="showPetForm()">Add Pet</button>
+            <div id="pet-form" style="display: none;">
+                <h3>Add Pet</h3>
+                <input type="text" id="petName" placeholder="Pet Name" required>
+                <input type="text" id="petType" placeholder="Pet Type" required>
+                <input type="text" id="petBreed" placeholder="Pet Breed" required>
+                <input type="number" id="petAge" placeholder="Pet Age" required>
+                <input type="number" id="petOwnerID" placeholder="Owner ID" required>
+                <button onclick="addPet()">Submit</button>
+            </div>
+            <div id="pet-list"></div>
+        </section>
+
+        <section id="appointments">
+            <h2>Appointments</h2>
+            <button onclick="showAppointmentForm()">Add Appointment</button>
+            <div id="appointment-form" style="display: none;">
+                <h3>Add Appointment</h3>
+                <input type="text" id="appointTime" placeholder="Time" required>
+                <input type="date" id="appointDate" required>
+                <input type="text" id="appointStatus" placeholder="Status" required>
+                <input type="number" id="appointAdminID" placeholder="Admin ID" required>
+                <input type="number" id="appointOwnerID" placeholder="Owner ID" required>
+                <input type="number" id="appointPetID" placeholder="Pet ID" required>
+                <input type="number" id="appointDoctorID" placeholder="Doctor ID" required>
+                <button onclick="addAppointment()">Submit</button>
+            </div>
+            <div id="appointment-list"></div>
+        </section>
+    </main>
+
+    <script src="dashboard.js"></script> <!-- Link to your JavaScript -->
+</body>
+</html>

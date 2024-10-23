@@ -77,44 +77,93 @@ app.post('/register', (req, res) => {
 
 
 // Login client
+
+
+// Temporary route to add a new admin with hashed password
+app.post('/add-admin', (req, res) => {
+    const { AdminInitials, AdminSurname, AdminContact_Num, Email, password } = req.body;
+
+    // Hash the password
+    bcrypt.hash(password, 10, (err, hashedPassword) => {
+        if (err) return res.status(500).json({ message: 'Error hashing password' });
+
+        // Insert the new admin with the hashed password
+        const newAdmin = {
+            AdminInitials,
+            AdminSurname,
+            AdminContact_Num,
+            password: admin1, // Store the hashed password
+            Email
+        };
+
+        db.query('INSERT INTO AdminStaff SET ?', newAdmin, (err, result) => {
+            if (err) return res.status(500).json({ message: 'Database error', error: err });
+            res.json({ message: 'Admin added successfully' });
+        });
+    });
+});
+
+
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
 
+    console.log(`Login attempt for email: ${email}`); // Log the email
+
     // Check if the user is an Admin
     db.query('SELECT * FROM AdminStaff WHERE Email = ?', [email], (err, adminResults) => {
-        if (err) return res.status(500).json({ message: 'Database error' });
+        if (err) {
+            console.log('Database error (Admin): ', err); // Log database errors
+            return res.status(500).json({ message: 'Database error' });
+        }
 
         if (adminResults.length > 0) {
             const admin = adminResults[0];
+            console.log('Admin found:', admin);
 
             // Compare the password
             bcrypt.compare(password, admin.password, (err, isMatch) => {
-                if (err) return res.status(500).json({ message: 'Error comparing passwords' });
+                if (err) {
+                    console.log('Error comparing admin passwords:', err); // Log bcrypt comparison error
+                    return res.status(500).json({ message: 'Error comparing passwords' });
+                }
 
                 if (isMatch) {
                     req.session.userId = admin.AdminID;
+                    console.log('Admin login successful');
                     res.json({ message: 'Login successful', role: 'admin' });
                 } else {
+                    console.log('Admin password mismatch'); // Log password mismatch
                     res.status(401).json({ message: 'Invalid credentials' });
                 }
             });
         } else {
             // Check if the user is a Client
             db.query('SELECT * FROM Client WHERE ownerEmail_addr = ?', [email], (err, clientResults) => {
-                if (err) return res.status(500).json({ message: 'Database error' });
+                if (err) {
+                    console.log('Database error (Client):', err);
+                    return res.status(500).json({ message: 'Database error' });
+                }
 
                 if (clientResults.length === 0) {
+                    console.log('No client or admin found');
                     return res.status(401).json({ message: 'Invalid credentials' });
                 }
 
                 const client = clientResults[0];
+                console.log('Client found:', client);
+
                 bcrypt.compare(password, client.password, (err, isMatch) => {
-                    if (err) return res.status(500).json({ message: 'Error comparing passwords' });
+                    if (err) {
+                        console.log('Error comparing client passwords:', err);
+                        return res.status(500).json({ message: 'Error comparing passwords' });
+                    }
 
                     if (isMatch) {
                         req.session.userId = client.ownerID;
+                        console.log('Client login successful');
                         res.json({ message: 'Login successful', role: 'client' });
                     } else {
+                        console.log('Client password mismatch');
                         res.status(401).json({ message: 'Invalid credentials' });
                     }
                 });

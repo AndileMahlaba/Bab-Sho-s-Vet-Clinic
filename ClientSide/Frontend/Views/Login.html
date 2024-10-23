@@ -24,11 +24,6 @@
 <!-- Main Content -->
 <div class="content">
     <nav class="navbar">
-        <div class="logo-container">
-            <a href="Home_Page.html">
-                <img src="Doctor Pet Logo.jpg" alt="Website Logo" class="navbar-logo">
-            </a>
-        </div>
         <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger icon -->
         <ul class="navbar-links">
             <li><a href="Home_Page.html">Home</a></li>
@@ -41,31 +36,12 @@
         </ul>
     </nav>
 
-    <!-- Main Content -->
-    <div class="content">
-        <nav class="navbar">
-            <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger icon -->
-            <ul class="navbar-links">
-                <li><a href="Home_Page.html">Home</a></li>
-                <li><a href="Book Appointment.html">Book Appointment</a></li>
-                <li><a href="Services.html">Services</a></li>
-                <li><a href="Payments.html">Payments</a></li>
-                <li><a href="Contact.html">Contacts</a></li>
-                <li><a href="Consultation.html">Consultation</a></li>
-                <li class="login"><a href="Login.html">Login/Logout</a></li>
-            </ul>
-        </nav>
-
 <!-- Login Form Section -->
 <section class="login-section">
     <div class="login-container">
         <h2>Login</h2>
         <form id="loginForm">
-            
-            <div class="logo-container text-center">
-                <img src="Doctor Pet Logo.jpg" alt="Doctor Pet Logo" class="logo">
-            </div>
-            <label for="username">Username:</label>
+            <label for="username">Username (Email):</label>
             <input type="text" id="username" name="username" required>
 
             <label for="password">Password:</label>
@@ -74,7 +50,7 @@
             <button type="submit" class="btn">Login</button>
         </form>
         <p>Don't have an account? <a href="register.html">Sign up here</a></p>
-        
+        <p>Login as admin <a href="register.html"> Admin page</a></p>
     </div>
 </section>
 
@@ -87,7 +63,7 @@
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const email = document.getElementById('username').value; // Using email for login
+        const email = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
         fetch('http://localhost:4000/login', {
@@ -101,23 +77,22 @@
         .then(data => {
             if (data.message === 'Login successful') {
                 sessionStorage.setItem('loggedin', 'true');
-                // Check if the user is an admin or a client
+                // Redirect based on the user's role
                 if (data.role === 'admin') {
-                    window.location.href = 'Admin Dashboard.html'; // Redirect to admin dashboard
+                    window.location.href = 'Admin Dashboard.html'; // Admin Dashboard
                 } else {
-                    window.location.href = 'Home_Page.html'; // Redirect to client homepage
+                    window.location.href = 'Home_Page.html'; // Client homepage
                 }
             } else {
-                alert('Invalid username or password.');
+                alert('Invalid email or password.');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('There was an error logging in. Please try again later.');
+            alert('Login failed. Please try again.');
         });
     });
 </script>
 
-
 </body>
-  <html>
+</html>
