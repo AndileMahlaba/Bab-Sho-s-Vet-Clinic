@@ -21,8 +21,8 @@
             <li><a href="Payment Page.html">Payments</a></li>
         </ul>
         <ul class="settings-menu">
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Sign out</a></li>
+                
+            <li><a href="ClientSide/Frontend/Views/Login.html">Sign out</a></li>
         </ul>
     </nav>
 
@@ -38,23 +38,14 @@
             <li><a href="Payment Page.html">Payments</a></li>
         </ul>
         <ul class="settings-menu">
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Sign out</a></li>
+                
+            <li><a href="ClientSide/Frontend/Views/Login.html">Sign out</a></li>
         </ul>
     </nav>
 
     <div class="container">
         <h1>Medical History</h1>
-        <form id="medicalHistoryForm">
-            <input type="text" placeholder="Service Type" name="serviceType" required>
-            <input type="date" placeholder="Service Date" name="serviceDate" required>
-            <input type="time" placeholder="Start Time" name="serviceStartTime" required>
-            <input type="time" placeholder="End Time" name="serviceEndTime" required>
-            <input type="text" placeholder="Description" name="serviceDesc" required>
-            <input type="number" placeholder="Consultation Number" name="ConsulNum" required>
-            <input type="number" placeholder="Pet ID" name="petID" required>
-            <button type="submit">Add Medical History</button>
-        </form>
+       
         <table>
             <thead>
                 <tr>
@@ -74,7 +65,36 @@
         </table>
     </div>
     <button id="mode-toggle">Switch to Dark Mode</button>
+<script>
+    const apiUrl = 'http://localhost:4000/medical-history';
 
+// Fetch all medical history entries
+async function fetchMedicalHistory() {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    const tableBody = document.getElementById('medicalHistoryTableBody');
+    tableBody.innerHTML = '';
+
+    data.forEach(entry => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${entry.serviceID}</td>
+            <td>${entry.serviceType}</td>
+            <td>${entry.serviceDate}</td>
+            <td>${entry.serviceStartTime}</td>
+            <td>${entry.serviceEndTime}</td>
+            <td>${entry.serviceDesc}</td>
+            <td>${entry.ConsulNum}</td>
+            <td>${entry.petID}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+// Call the function to load data on page load
+fetchMedicalHistory();
+
+</script>
     <script>
         const toggleButton = document.getElementById('mode-toggle');
         toggleButton.addEventListener('click', () => {

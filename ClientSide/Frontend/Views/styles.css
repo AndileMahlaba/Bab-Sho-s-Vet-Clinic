@@ -40,6 +40,20 @@
   align-items: center;
 }
 
+html, body {
+  height: 100%;
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: center;      /* Center vertically */
+}
+
+.container {
+  max-width: 1200px; /* Set a max width for the container */
+  margin: 0;         /* Remove default margin */
+  padding: 20px;     /* Optional: Add some padding */
+}
+
+
 .navbar-logo {
   width: 80px; /* Adjust size as needed */
   height: 62px;
@@ -119,7 +133,7 @@
 }
 
 .sidebar ul li a:hover {
-  background-color: #29e77f;
+  background-color: #949494;
 }
 
 /* Utility Classes */
@@ -233,7 +247,7 @@
   
   .booking-container input:focus, 
   .booking-container select:focus {
-    border-color: #28a745;
+    border-color: #a5a5a5;
     outline: none;
   }
   
@@ -291,4 +305,158 @@
       padding: 1.5rem 0.5rem;
     }
   }
-  
+  /* Resetting margins, padding, and box-sizing */
+* {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fixing background issue on the body */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: url('Animals.jpg') no-repeat center center fixed !important;
+  background-size: cover !important;
+  background-color: transparent; /* Fallback to ensure no black background */
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: rgb(73, 73, 73);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 14px 20px;
+  border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+  background-color: #b3c6c7;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #8BC34A;
+  padding-top: 60px;
+  transition: left 0.3s ease-in-out;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar ul li a {
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #29e77f;
+}
+
+/* Form Styles */
+form {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 30px 40px;
+  margin: 80px auto;
+  width: 400px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  color: black;
+}
+
+form label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #28a745;
+  outline: none;
+}
+
+form button {
+  background-color: rgb(73, 73, 73);
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #218838;
+}
+
+/* Utility Classes */
+.text-large {
+  font-size: 1.2rem;
+}
+
+.padding-small {
+  padding: 0.8rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .navbar ul {
+      display: none;
+  }
+
+  .hamburger {
+      display: block;
+  }
+
+  .sidebar.active ~ .content {
+      margin-left: 0;
+  }
+}

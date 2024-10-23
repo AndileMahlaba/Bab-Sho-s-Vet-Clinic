@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultations - Vet Doctor Clinic</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navbar (reused from Payments page) -->
+<nav class="navbar">
+    <ul>
+        <li><a href="Home_Page.html">Home</a></li>
+        <li><a href="Book Appointment.html">Book Appointment</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Payments.html">Payments</a></li>
+        <li><a href="Contact.html">Contacts</a></li>
+        <li><a href="Consultation.html">Consultation</a></li>
+        <li class="login"><a href="Login.html">Login/Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+    <ul>
+        <li><a href="Home_Page.html">Home</a></li>
+        <li><a href="Book Appointment.html">Book Appointment</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Payments.html">Payments</a></li>
+        <li><a href="Contact.html">Contacts</a></li>
+        <li><a href="Consultation.html">Consultation</a></li>
+        <li class="login"><a href="Login.html">Login/Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Main Content -->
+<div class="content">
+    <h1>Consultations</h1>
+    <form id="consultationForm">
+        <label for="ConsulDate">Consultation Date:</label>
+        <input type="date" id="ConsulDate" name="ConsulDate" required>
+
+        <label for="ConsulStartTime">Start Time:</label>
+        <select id="ConsulStartTime" name="ConsulStartTime" required>
+            <!-- Time options will be added by JavaScript -->
+        </select>
+
+        <label for="ConsulEndTime">End Time:</label>
+        <input type="time" id="ConsulEndTime" name="ConsulEndTime" readonly required>
+
+        <label for="doctorID">Doctor ID:</label>
+        <input type="number" id="doctorID" name="doctorID" min="1" required>
+
+        <label for="petID">Pet ID:</label>
+        <input type="number" id="petID" name="petID" min="1" required>
+
+        <button type="submit" class="btn">Add Consultation</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Doctor ID</th>
+                <th>Pet ID</th>
+            </tr>
+        </thead>
+        <tbody id="consultationTableBody"></tbody>
+    </table>
+</div>
+
+<script>
+    // Generate time slots from 8 AM to 5 PM (hourly)
+    const startTimeSelect = document.getElementById('ConsulStartTime');
+    const endTimeInput = document.getElementById('ConsulEndTime');
+
+    for (let hour = 8; hour <= 16; hour++) {  // Adjusted loop to 16:00 (end at 5 PM)
+        const timeString = `${hour.toString().padStart(2, '0')}:00`;
+        const option = document.createElement('option');
+        option.value = timeString;
+        option.textContent = timeString;
+        startTimeSelect.appendChild(option);
+    }
+
+    // Automatically set the End Time to be 1 hour after the selected Start Time
+    startTimeSelect.addEventListener('change', () => {
+        const selectedTime = startTimeSelect.value;
+        const [hours, minutes] = selectedTime.split(':');
+        const endTime = new Date();
+        endTime.setHours(parseInt(hours) + 1, parseInt(minutes)); // Add 1 hour
+
+        // Format the end time as HH:MM
+        const formattedEndTime = endTime.toTimeString().slice(0, 5);
+        endTimeInput.value = formattedEndTime;
+    });
+
+    // Set the minimum and maximum date for consultation date input
+    const consultationDateInput = document.getElementById('ConsulDate');
+    
+    const today = new Date();
+    const maxDate = new Date();
+    maxDate.setMonth(today.getMonth() + 1); // One month later
+
+    const formatDate = (date) => {
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
+    consultationDateInput.min = formatDate(today);  // Set minimum date to today
+    consultationDateInput.max = formatDate(maxDate); // Set maximum date to one month later
+
+    const consultationForm = document.getElementById('consultationForm');
+    const consultationTableBody = document.getElementById('consultationTableBody');
+    let consultationNumber = 1;
+
+    consultationForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        
+        const formData = new FormData(consultationForm);
+        const consulDate = formData.get('ConsulDate');
+        const consulStartTime = formData.get('ConsulStartTime');
+        const consulEndTime = formData.get('ConsulEndTime');
+        const doctorID = formData.get('doctorID');
+        const petID = formData.get('petID');
+        
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${consultationNumber++}</td>
+            <td>${consulDate}</td>
+            <td>${consulStartTime}</td>
+            <td>${consulEndTime}</td>
+            <td>${doctorID}</td>
+            <td>${petID}</td>
+        `;
+        
+        consultationTableBody.appendChild(newRow);
+        consultationForm.reset();
+    });
+</script>
+
+</body>
+</html>

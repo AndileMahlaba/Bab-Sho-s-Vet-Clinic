@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Appointments</title>
-    <link rel="stylesheet" href="Admin Appointments.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -20,42 +20,13 @@
             <li><a href="Payment Page.html">Payments</a></li>
         </ul>
         <ul class="settings-menu">
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Sign out</a></li>
+                
+            <li><a href="ClientSide/Frontend/Views/Login.html">Sign out</a></li>
         </ul>
     </nav>
     
     <div class="appointments-container">
         <h1>Manage Appointments</h1>
-
-        <!-- Add New Appointment Form -->
-        <div class="add-appointment-form">
-            <h2 id="form-title">Add New Appointment</h2>
-            <form id="appointment-form" action="#" method="POST">
-                <input type="hidden" id="editing-index" value="">
-                
-                <label for="client-name">Client Name:</label>
-                <input type="text" id="client-name" name="client-name" required>
-
-                <label for="pet-name">Pet Name:</label>
-                <input type="text" id="pet-name" name="pet-name" required>
-
-                <label for="date">Date:</label>
-                <input type="date" id="date" name="date" required>
-
-                <label for="time">Time:</label>
-                <input type="time" id="time" name="time" required>
-
-                <label for="service">Service:</label>
-                <select id="service" name="service" required>
-                    <option value="checkup">Check-up</option>
-                    <option value="vaccination">Vaccination</option>
-                    <option value="surgery">Surgery</option>
-                </select>
-
-                <button type="submit" id="submit-btn">Add Appointment</button>
-            </form>
-        </div>
 
         <!-- Appointments List Table -->
         <div class="appointments-list">
@@ -80,5 +51,47 @@
 
     <script src ="scripts.js">  
     </script>
+    <script>
+    const apiUrl = 'http://localhost:4000/appointments'; 
+
+    // Fetch all appointments
+    async function fetchAppointments() {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        const appointmentsBody = document.getElementById('appointments-body');
+        appointmentsBody.innerHTML = '';
+    
+        data.forEach(appointment => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${appointment.ownerID}</td>
+                <td>${appointment.petID}</td>
+                <td>${appointment.appointDate}</td>
+                <td>${appointment.appointTime}</td>
+                <td>${appointment.appointStatus}</td>
+                <td>
+                    <button onclick="deleteAppointment(${appointment.AppointNum})">Delete</button>
+                    <button onclick="editAppointment(${appointment.AppointNum})">Edit</button>
+                </td>
+            `;
+            appointmentsBody.appendChild(row);
+        });
+    }
+    
+    // Delete appointment
+    async function deleteAppointment(id) {
+        await fetch(`${apiUrl}/${id}`, { method: 'DELETE' });
+        fetchAppointments();
+    }
+    
+    // Edit appointment (Redirect to a form or pre-fill a modal)
+    function editAppointment(id) {
+        // You can populate a form for editing or open a modal for update.
+        console.log(`Edit appointment with ID: ${id}`);
+    }
+    
+    // Initial load
+    fetchAppointments();
+  </script>
 </body>
 </html>
