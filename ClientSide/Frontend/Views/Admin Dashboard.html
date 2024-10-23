@@ -3,124 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vet Clinic Staff Dashboard</title>
-    <link rel="stylesheet" href="Dashboard.css">
+    <title>Vet Clinic Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS -->
 </head>
 <body>
-    <div class="dashboard-wrapper">
-        <!-- Sidebar -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <h2>Staff Dashboard</h2>
-            </div>
-            <ul class="menu">
-                
-                <li><a href="Manage Appointments.html">Appointments</a></li>
-                <li><a href="Consultation Page.html">Consultations</a></li>
-                <li><a href="Client Page.html">Clients</a></li>
-                <li><a href="Pet Page.html">Pets</a></li>
-                <li><a href="Medical History Page.html">Medical History</a></li>
-                <li><a href="Payment Page.html">Payments</a></li>
-            </ul>
-
-            <ul class="settings-menu">
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Sign out</a></li>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#clients">Clients</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+                <li><a href="#admins">Admins</a></li>
+                <li><a href="#pets">Pets</a></li>
+                <li><a href="#appointments">Appointments</a></li>
             </ul>
         </nav>
+    </header>
+    
+    <main>
+        <section id="clients">
+            <h2>Clients</h2>
+            <button onclick="showClientForm()">Add Client</button>
+            <div id="client-form" style="display: none;">
+                <h3>Add Client</h3>
+                <input type="text" id="clientFName" placeholder="First Name" required>
+                <input type="text" id="clientLName" placeholder="Last Name" required>
+                <input type="email" id="clientEmail" placeholder="Email" required>
+                <input type="text" id="clientPhone" placeholder="Phone" required>
+                <input type="text" id="clientAddress" placeholder="Address" required>
+                <button onclick="addClient()">Submit</button>
+            </div>
+            <div id="client-list"></div>
+        </section>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <header>
-                <h1>Dashboard Overview</h1>
-                <div class="actions">
-                    <button>Share</button>
-                    <button>Export</button>
-                    <select class="Schedule">
-                        <option>This week</option>
-                        <option>Last week</option>
-                        <option>Custom range</option>
-                    </select>
-                </div>
-            </header>
+        <section id="doctors">
+            <h2>Doctors</h2>
+            <button onclick="showDoctorForm()">Add Doctor</button>
+            <div id="doctor-form" style="display: none;">
+                <h3>Add Doctor</h3>
+                <input type="text" id="doctorInitials" placeholder="Initials" required>
+                <input type="text" id="doctorSurname" placeholder="Surname" required>
+                <input type="text" id="doctorContact" placeholder="Contact Number" required>
+                <button onclick="addDoctor()">Submit</button>
+            </div>
+            <div id="doctor-list"></div>
+        </section>
 
-            <!-- Data Section -->
-            <section class="data-section">
-                <h2>Today's Appointments</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Pet Name</th>
-                            <th>Owner Name</th>
-                            <th>Doctor</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Example data (will be dynamically populated) -->
-                        <tr>
-                            <td>1</td>
-                            <td>Max</td>
-                            <td>John Doe</td>
-                            <td>Dr. Smith</td>
-                            <td>2024-10-18</td>
-                            <td>14:00</td>
-                            <td>Scheduled</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Luna</td>
-                            <td>Jane Doe</td>
-                            <td>Dr. Brown</td>
-                            <td>2024-10-18</td>
-                            <td>16:00</td>
-                            <td>Completed</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+        <section id="admins">
+            <h2>Admin Staff</h2>
+            <button onclick="showAdminForm()">Add Admin</button>
+            <div id="admin-form" style="display: none;">
+                <h3>Add Admin</h3>
+                <input type="text" id="adminInitials" placeholder="Initials" required>
+                <input type="text" id="adminSurname" placeholder="Surname" required>
+                <input type="text" id="adminContact" placeholder="Contact Number" required>
+                <input type="email" id="adminEmail" placeholder="Email" required>
+                <button onclick="addAdmin()">Submit</button>
+            </div>
+            <div id="admin-list"></div>
+        </section>
 
-            <section class="data-section">
-                <h2>Pending Consultations</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Pet Name</th>
-                            <th>Doctor</th>
-                            <th>Date</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Example data (will be dynamically populated) -->
-                        <tr>
-                            <td>1</td>
-                            <td>Charlie</td>
-                            <td>Dr. Green</td>
-                            <td>2024-10-18</td>
-                            <td>10:00</td>
-                            <td>11:00</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Bella</td>
-                            <td>Dr. White</td>
-                            <td>2024-10-18</td>
-                            <td>11:30</td>
-                            <td>12:00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </div>
-    </div>
+        <section id="pets">
+            <h2>Pets</h2>
+            <button onclick="showPetForm()">Add Pet</button>
+            <div id="pet-form" style="display: none;">
+                <h3>Add Pet</h3>
+                <input type="text" id="petName" placeholder="Pet Name" required>
+                <input type="text" id="petType" placeholder="Pet Type" required>
+                <input type="text" id="petBreed" placeholder="Pet Breed" required>
+                <input type="number" id="petAge" placeholder="Pet Age" required>
+                <input type="number" id="petOwnerID" placeholder="Owner ID" required>
+                <button onclick="addPet()">Submit</button>
+            </div>
+            <div id="pet-list"></div>
+        </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="staff-dashboard.js"></script>
+        <section id="appointments">
+            <h2>Appointments</h2>
+            <button onclick="showAppointmentForm()">Add Appointment</button>
+            <div id="appointment-form" style="display: none;">
+                <h3>Add Appointment</h3>
+                <input type="text" id="appointTime" placeholder="Time" required>
+                <input type="date" id="appointDate" required>
+                <input type="text" id="appointStatus" placeholder="Status" required>
+                <input type="number" id="appointAdminID" placeholder="Admin ID" required>
+                <input type="number" id="appointOwnerID" placeholder="Owner ID" required>
+                <input type="number" id="appointPetID" placeholder="Pet ID" required>
+                <input type="number" id="appointDoctorID" placeholder="Doctor ID" required>
+                <button onclick="addAppointment()">Submit</button>
+            </div>
+            <div id="appointment-list"></div>
+        </section>
+    </main>
+
+    <script src="dashboard.js"></script> <!-- Link to your JavaScript -->
 </body>
 </html>
