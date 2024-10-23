@@ -11,25 +11,24 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: url('Iguana.jpeg') no-repeat center center fixed !important;
+  background: url('Booking.jpg') no-repeat center center fixed !important;
   background-size: cover !important;
   background-color: transparent;
 }
 
-/* Navbar Styles */
+
 .navbar {
-  background-color: rgb(11, 187, 11); /* Matching your preferred green */
+  background-color:  rgb(73, 73, 73);  /* Main color: Muted greenish blue */
   position: fixed;
   top: 0;
   width: 100%;
-  height: 60px;
+  height: 70px;
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ccc;
+  padding: 0 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Logo on the Left */
@@ -64,7 +63,7 @@ html, body {
 }
 
 .navbar ul li a:hover {
-  background-color: #29e77f;
+  background-color: #b3c6c7;
 }
 
 /* Hamburger menu (mobile) */
@@ -118,7 +117,7 @@ html, body {
 }
 
 .sidebar ul li a:hover {
-  background-color: #29e77f;
+  background-color: #b3c6c7;
 }
 
 /* Utility Classes */
@@ -131,7 +130,7 @@ html, body {
 }
 
 .btn {
-    background-color: #007bff;
+    background-color: rgb(73, 73, 73);
     color: white;
     padding: 0.8rem 2rem;
     border-radius: 5px;
@@ -142,7 +141,7 @@ html, body {
 }
 
 .btn:hover {
-    background-color: #218838;
+    background-color:  #b3c6c7;
 }
 
 /* Media Queries */
@@ -180,6 +179,19 @@ html, body {
         padding: 8px 10px;
     }}
 
+
+    
+.logo-container {
+  text-align: center; 
+  margin-bottom: 10px; 
+}
+
+.logo {
+  width: 100px; 
+    height: 100px; 
+    border-radius: 50%;
+    object-fit: cover;
+}
 /* Login Form Section */
 .login-section {
   padding: 4rem 2rem;
@@ -235,7 +247,7 @@ html, body {
 }
 
 .login-container button {
-  background-color: #007bff;
+  background-color: rgb(73, 73, 73);
   padding: 0.8rem;
   border: none;
   color: white;
