@@ -11,7 +11,9 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+
   background: url('Booking.jpg') no-repeat center center fixed !important;
+
   background-size: cover !important;
   background-color: transparent;
 }
@@ -193,6 +195,19 @@ html, body {
     object-fit: cover;
 }
 /* Login Form Section */
+
+.logo-container {
+  text-align: center; 
+  margin-bottom: 10px; 
+}
+
+.logo {
+  width: 100px; 
+    height: 100px; 
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .login-section {
   padding: 4rem 2rem;
   background-color: transparent;
