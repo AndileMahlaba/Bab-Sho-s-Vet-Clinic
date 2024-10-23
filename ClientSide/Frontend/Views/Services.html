@@ -27,7 +27,7 @@
                     <img src="Doctor Pet Logo.jpg" alt="Website Logo" class="navbar-logo">
                 </a>
             </div>
-            <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger icon -->
+            <div class="hamburger" id="hamburger">&#9776;</div>
             <ul class="navbar-links">
                 <li><a href="Home_Page.html">Home</a></li>
                 <li><a href="Book Appointment.html">Book Appointment</a></li>
@@ -37,42 +37,56 @@
                 <li><a href="Login.html">Login/Logout</a></li>
             </ul>
         </nav>
-<!-- Services Section -->
-<section class="services-section">
-    <div class="services-container">
-        <h2>Our Services</h2>
-        <ul>
-            <li>
-                <h3>Check-up</h3>
-                <p>Regular health checks for your pet to ensure they stay in good shape.</p>
-            </li>
-            <li>
-                <h3>Vaccination</h3>
-                <p>Protect your pet from diseases with our comprehensive vaccination services.</p>
-            </li>
-            <li>
-                <h3>Surgery</h3>
-                <p>Professional surgical services with care and precision.</p>
-            </li>
-            <li>
-                <h3>Grooming</h3>
-                <p>Keep your pet looking and feeling their best with our grooming services.</p>
-            </li>
-        </ul>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="services-container">
+                <h2>Our Services</h2>
+                <ul>
+                    <li class="service-box">
+                        <img src="ear check.jpg" alt="Check-up" class="service-image">
+                        <h3>Check-up</h3>
+                        <p>Regular health checks to ensure your pet stays in top condition.</p>
+                    </li>
+                    <li class="service-box">
+                        <img src="vet tings.jpg" alt="Vaccination" class="service-image">
+                        <h3>Vaccination</h3>
+                        <p>Comprehensive vaccination services to protect your pet from diseases.</p>
+                    </li>
+                    <li class="service-box">
+                        <img src="doggie.jpg" alt="Surgery" class="service-image">
+                        <h3>Surgery</h3>
+                        <p>Expert surgical services performed with care and precision.</p>
+                    </li>
+                    <li class="service-box">
+                        <img src="touch.jpg" alt="Grooming" class="service-image">
+                        <h3>Grooming</h3>
+                        <p>Keep your pet looking their best with professional grooming.</p>
+                    </li>
+                    <li class="service-box">
+                        <img src="dental.jpg" alt="Dental Care" class="service-image">
+                        <h3>Dental Care</h3>
+                        <p>Maintain your pet’s oral health with regular dental care services.</p>
+                    </li>
+                    <li class="service-box">
+                        <img src="horse pic.jpg" alt="Boarding" class="service-image">
+                        <h3>Pet Boarding</h3>
+                        <p>Safe and comfortable boarding services while you are away.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
+        </footer>
     </div>
-</section>
 
-<!-- Footer -->
-<footer>
-    <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
-</footer>
-
-<script>
-    function logout() {
-        sessionStorage.removeItem('loggedin');
-        window.location.href = 'Login.html'; // Redirect to login page
-    }
-</script>
-<script src="script.js"></script>
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

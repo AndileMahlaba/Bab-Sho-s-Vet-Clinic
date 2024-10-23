@@ -53,14 +53,27 @@
             </ul>
         </nav>
 
-<!-- Hero Section with Changing Background Images -->
-<header class="hero" id="hero">
-    <div class="hero-content">
-        <h1>Welcome to Bab'Sho's VET Clinic</h1>
-        <p>Your pet's health and well-being is our top priority.</p>
-        <a href="Book Appointment.html" class="btn">Book an Appointment</a>
-    </div>
-</header>
+        <header class="hero" id="hero">
+            <div class="slideshow-container">
+                <div class="slides fade">
+                    <img src="Horse_cow.jpg" style="width:100%">
+                </div>
+                <div class="slides fade">
+                    <img src="Iguana.jpeg" style="width:100%">
+                </div>
+                <div class="slides fade">
+                    <img src="Book_App.jpg" style="width:100%">
+                </div>
+            </div>
+        
+            <div class="hero-content">
+                <h1>Welcome to Bab'Sho's VET Clinic</h1>
+                <p>Your pet's health and well-being is our top priority.</p>
+                <a href="Book Appointment.html" class="btn">Book an Appointment</a>
+            </div>
+        </header>
+        
+        
 <div class="fullbody">
 <!-- We deliver with care Section -->
 <section class="care-section">
@@ -135,6 +148,21 @@
         sessionStorage.removeItem('loggedin');
         window.location.href = 'Login.html'; // Redirect to login page
     }
+    let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("slides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 3000); // Change image every 3 seconds
+}
+
 </script>
 
 <script src="script.js"></script>
