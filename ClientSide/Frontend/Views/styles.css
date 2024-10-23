@@ -20,7 +20,7 @@
  
 /* Navbar Styles */
 .navbar {
-  background-color: rgb(11, 187, 11); /* Matching your preferred green */
+  background-color: rgb(73, 73, 73); /* Matching your preferred green */
   position: fixed;
   top: 0;
   width: 100%;
@@ -65,7 +65,7 @@
 }
 
 .navbar ul li a:hover {
-  background-color: #29e77f;
+  background-color: #b3c6c7;
 }
 
 /* Hamburger menu (mobile) */
@@ -164,7 +164,7 @@
 
 /* Button Styles */
   .btn {
-    background-color: #007bff;
+    background-color: rgb(73, 73, 73);
     color: white;
     padding: 0.8rem 2rem;
     border-radius: 5px;
@@ -179,7 +179,7 @@
   }
   
   .btn:hover {
-    background-color: #218838;
+    background-color:  #b3c6c7;
   }
   
   /* Section Styles */

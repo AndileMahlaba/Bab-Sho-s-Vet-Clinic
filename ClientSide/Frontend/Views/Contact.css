@@ -20,7 +20,7 @@ html, body {
 
 /* Navbar Styles */
 .navbar {
-  background-color: rgb(11, 187, 11); /* Matching your preferred green */
+  background-color: rgb(73, 73, 73); /* Matching your preferred green */
   position: fixed;
   top: 0;
   width: 100%;
@@ -66,7 +66,7 @@ html, body {
 }
 
 .navbar ul li a:hover {
-  background-color: #29e77f;
+  background-color: #b3c6c7;
 }
 
 /* Hamburger menu (mobile) */
@@ -120,7 +120,7 @@ html, body {
 }
 
 .sidebar ul li a:hover {
-  background-color: #29e77f;
+  background-color: #b3c6c7;
 }
 
 /* Utility Classes */
@@ -134,7 +134,7 @@ html, body {
 
 
 .btn {
-    background-color: #007bff;
+    background-color: rgb(73, 73, 73);
     color: white;
     padding: 0.8rem 2rem;
     border-radius: 5px;
@@ -145,7 +145,7 @@ html, body {
 }
 
 .btn:hover {
-    background-color: #218838;
+    background-color: #b3c6c7;
 }
 
 /* Media Queries */
@@ -234,12 +234,12 @@ html, body {
 }
 
 .contact-section input:focus, .contact-section textarea:focus {
-  border-color: #28a745;
+  border-color:rgb(73, 73, 73) ;
   outline: none;
 }
 
 .contact-section .btn {
-  background-color: #007bff;
+  background-color: rgb(73, 73, 73);
   padding: 0.8rem;
   border: none;
   color: white;
