@@ -17,6 +17,7 @@
         <li><a href="Services.html">Services</a></li>
         <li><a href="Payments.html">Payments</a></li>
         <li><a href="Contact.html">Contacts</a></li>
+        <li><a href="Consultation.html">Consultation</a></li>
         <li class="login"><a href="Login.html">Login/Logout</a></li>
     </ul>
 </nav>
@@ -36,7 +37,8 @@
             <li><a href="Services.html">Services</a></li>
             <li><a href="Payments.html">Payments</a></li>
             <li><a href="Contact.html">Contacts</a></li>
-            <li><a href="Login.html">Login/Logout</a></li>
+            <li><a href="Consultation.html">Consultation</a></li>
+            <li class="login"><a href="Login.html">Login/Logout</a></li>
         </ul>
     </nav>
     <!-- Appointment Booking Section -->
@@ -47,6 +49,10 @@
                 <label for="petName">Pet's Name:</label>
                 <input type="text" id="petName" name="petName" required>
 
+                
+                <label for="ownerName">Pet type</label>
+                <input type="text" id="PetType" name="PetType" required>
+
                 <label for="ownerName">Owner's Name:</label>
                 <input type="text" id="ownerName" name="ownerName" required>
 
@@ -56,13 +62,26 @@
                 <label for="time">Preferred Time (8 AM - 5 PM):</label>
                 <input type="time" id="time" name="time" required>
 
+                
+
                 <label for="service">Service Required:</label>
                 <select id="service" name="service" required>
                     <option value="checkup">Check-up</option>
                     <option value="vaccination">Vaccination</option>
                     <option value="surgery">Surgery</option>
+                    <option value="dental">Dental Care</option>
                     <option value="grooming">Grooming</option>
+                    <option value="Pet_Boarding">Pet Boarding</option>
                 </select>
+
+                <label for="paymentType">Payment type</label>
+                <select id="PaymentType"  name="PaymentType" required >
+                    <option value="checkup">Cash</option>
+                    <option value="vaccination">Card</option>
+                    
+                </select>
+
+                
 
                 <button type="submit" class="btn">Book Appointment</button>
             </form>
@@ -73,6 +92,74 @@
     <footer>
         <p>&copy; 2024 VET Doctor Clinic. All rights reserved.</p>
     </footer>
+
+  
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form from submitting normally
+    
+            const petName = document.getElementById('petName').value;
+            const petType = document.getElementById('PetType').value;
+            const ownerName = document.getElementById('ownerName').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const service = document.getElementById('service').value;
+            const paymentType = document.getElementById('PaymentType').value;
+    
+            const servicePrices = {
+                checkup: 500,
+                vaccination: 750,
+                surgery: 3000,
+                dental: 1200,
+                grooming: 600,
+                Pet_Boarding: 1500
+            };
+    
+            const servicePrice = servicePrices[service]; // Get the service price
+    
+            if (paymentType === 'cash') {
+                // If payment method is cash, generate receipt
+                generateReceipt(petName, petType, ownerName, date, time, service, servicePrice);
+            } else if (paymentType === 'card') {
+                // If payment method is card, redirect to the payments page with booking details
+                const params = new URLSearchParams({
+                    petName,
+                    petType,
+                    ownerName,
+                    date,
+                    time,
+                    service,
+                    price: servicePrice
+                });
+    
+                window.location.href = `Payments.html?${params.toString()}`;
+            }
+        });
+    
+        // Generate receipt in a new tab
+        function generateReceipt(petName, petType, ownerName, date, time, service, price) {
+            const receiptWindow = window.open('', '_blank'); // Open new tab
+            receiptWindow.document.write(`
+                <html>
+                <head><title>Receipt - Vet Doctor Clinic</title></head>
+                <body>
+                    <h2>Appointment Receipt</h2>
+                    <p><strong>Pet's Name:</strong> ${petName}</p>
+                    <p><strong>Pet Type:</strong> ${petType}</p>
+                    <p><strong>Owner's Name:</strong> ${ownerName}</p>
+                    <p><strong>Appointment Date:</strong> ${date}</p>
+                    <p><strong>Appointment Time:</strong> ${time}</p>
+                    <p><strong>Service:</strong> ${service}</p>
+                    <p><strong>Price:</strong> R${price}</p>
+                    <p><strong>Payment Method:</strong> Cash</p>
+                    <p>Thank you for booking with Vet Doctor Clinic!</p>
+                </body>
+                </html>
+            `);
+            receiptWindow.document.close(); // Close writing stream
+        }
+    </script>
+    
 
     <script>
         const dateInput = document.getElementById('date');
@@ -102,7 +189,7 @@
             const service = document.getElementById('service').value;
 
             fetch('http://localhost:4000/add-appointment', {
-                method: 'POST',
+                            method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
                     appointTime: time, 

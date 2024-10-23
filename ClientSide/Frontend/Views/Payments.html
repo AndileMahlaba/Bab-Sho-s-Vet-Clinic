@@ -12,11 +12,12 @@
 <nav class="navbar">
     <ul>
         <li><a href="Home_Page.html">Home</a></li>
-                <li><a href="Book Appointment.html">Book Appointment</a></li>
-                <li><a href="Services.html">Services</a></li>
-                <li><a href="Payments.html">Payments</a></li>
-                <li><a href="Contact.html">Contacts</a></li>
-                <li class="login"><a href="Login.html">Login/Logout</a></li>
+        <li><a href="Book Appointment.html">Book Appointment</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Payments.html">Payments</a></li>
+        <li><a href="Contact.html">Contacts</a></li>
+        <li><a href="Consultation.html">Consultation</a></li>
+        <li class="login"><a href="Login.html">Login/Logout</a></li>
     </ul>
 </nav>
 
@@ -28,6 +29,7 @@
         <li><a href="Services.html">Services</a></li>
         <li><a href="Payments.html">Payments</a></li>
         <li><a href="Contact.html">Contacts</a></li>
+        <li><a href="Consultation.html">Consultation</a></li>
         <li class="login"><a href="Login.html">Login/Logout</a></li>
     </ul>
 </nav>
@@ -47,7 +49,8 @@
             <li><a href="Services.html">Services</a></li>
             <li><a href="Payments.html">Payments</a></li>
             <li><a href="Contact.html">Contacts</a></li>
-            <li><a href="Login.html">Login/Logout</a></li>
+            <li><a href="Consultation.html">Consultation</a></li>
+            <li class="login"><a href="Login.html">Login/Logout</a></li>
         </ul>
     </nav>
 <!-- Payments Section -->
@@ -55,17 +58,24 @@
     <div class="payment-container">
         <h2>Make a Payment</h2>
         <form id="paymentForm">
+
+            <label for="cardName">Cardholder Name:</label>
+            <input type="text" id="cardName" name="cardName" required>     
+
             <label for="cardNumber">Card Number:</label>
             <input type="text" id="cardNumber" name="cardNumber" required>
 
-            <label for="cardName">Cardholder Name:</label>
-            <input type="text" id="cardName" name="cardName" required>
-
-            <label for="expiryDate">Expiry Date:</label>
+            <label for="expiryDate">Card Expiry Date:</label>
             <input type="month" id="expiryDate" name="expiryDate" required>
 
             <label for="cvv">CVV:</label>
             <input type="text" id="cvv" name="cvv" required>
+
+            <label for="paymentAmount"> Payment Amount</label>
+            <input type="text" id="paymentAmount" name="paymentAmount" required>
+
+            <label for="PaymentDate">Payment Date</label>
+            <input type="text" id="PaymentDate" name="PaymentDate" required>
 
             <button type="submit" class="btn">Submit Payment</button>
         </form>
@@ -106,6 +116,48 @@
         });
     });
 </script>
+
+<script>
+    document.getElementById('paymentForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const cardNumber = document.getElementById('cardNumber').value;
+        const cardName = document.getElementById('cardName').value;
+        const expiryDate = document.getElementById('expiryDate').value;
+        const cvv = document.getElementById('cvv').value;
+
+        const paymentData = {
+            paymentMethod: 'card',
+            accountNum: cardNumber,
+            accountHolder: cardName,
+            accountExpDate: expiryDate,
+            accountCVV: cvv,
+            paymentAmt: 100.00,  // You can dynamically replace this value
+            paymentDate: new Date().toISOString().split('T')[0],
+            ownerID: 1
+        };
+
+        fetch('http://localhost:4000/add-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(paymentData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Payment added successfully') {
+                alert('Payment successful.');
+                window.location.href = 'Home_Page.html';  // Redirect to home page or a confirmation page
+            } else {
+                alert('Payment failed.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error processing the payment. Please try again.');
+        });
+    });
+</script>
+
 
 </body>
 </html>
